@@ -1,6 +1,6 @@
-import App from './App.svelte';
+import Welcome from './Welcome.svelte';
 
-const app = new App({
+const app = new Welcome({
 	target: document.body,
 	props: {
 		name: 'world'

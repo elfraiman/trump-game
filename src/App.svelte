@@ -14,8 +14,10 @@
 <style>
   main {
     display: grid;
+    width: 100%;
+    height: 100vh;
+    padding: 16px;
     grid-template: 0.3fr 1fr 1fr / 1fr 1fr 1fr;
-    background-color: #00b0ff;
   }
 
   img {
@@ -27,6 +29,8 @@
   .card-div {
     grid-column: 2/3;
     grid-row: 2/3;
+    justify-content: center;
+    align-content: center;
   }
 </style>
 
