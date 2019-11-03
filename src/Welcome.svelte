@@ -1,14 +1,3 @@
-<script>
-  import App from "./App.svelte";
-  import { fade } from 'svelte/transition';
-  let numberOfPlayers;
-  let renderGame = false;
-
-  function submit() {
-    renderGame = true;
-  }
-</script>
-
 <style>
   .welcome-wrapper {
     display: grid;
@@ -48,15 +37,79 @@
     box-shadow: none;
     background-color: whitesmoke;
   }
+
+  select {
+    height: 50px;
+    border: none;
+    border-radius: 5;
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .player-inputs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player-input {
+    margin: 6px;
+  }
 </style>
+
+<script>
+  import { playerList } from './store.js';
+  import App from "./App.svelte";
+
+  export let numberOfPlayers = 0;
+  let renderGame = false;
+  let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  export let arrayOfPlayers = [];
+
+  function handleSubmit() {
+    renderGame = true;
+    console.log(arrayOfPlayers);
+  }
+
+  function createPlayers() {
+    if (arrayOfPlayers.length > 0 ) {
+      arrayOfPlayers = [];
+    }
+    let num = 1;
+    let tempArray = new Array(numberOfPlayers).fill({id: num});
+
+    tempArray.forEach(player => {
+      arrayOfPlayers.push({id: num++, name: '', score: 0 })
+    })
+
+    console.log(arrayOfPlayers);
+    playerList.set(arrayOfPlayers);
+  }
+
+</script>
+
 
 {#if renderGame}
   <App />
 {:else}
   <div class="welcome-wrapper">
-    <h2 >Down or Donald</h2>
+    <h2>Down or Donald</h2>
     <img src="images/trump_guns.png" alt="trump" />
-    <input bind:value={numberOfPlayers} placeholder="Enter number of players" />
-    <button on:click={() => submit()}>Submit</button>
+    <form on:submit|preventDefault={handleSubmit}>
+      <select bind:value={numberOfPlayers} on:change={createPlayers}>
+        {#each players as player}
+          <option value={player}>{player}</option>
+        {/each}
+      </select>
+
+      {#if arrayOfPlayers.length > 0}
+        <div class="player-inputs">
+          {#each arrayOfPlayers as player (player.id)}
+            <input class="player-input" placeholder="Player {player.id} name" bind:value={player.name} />
+          {/each}
+        </div>
+      {/if}
+
+      <button type="submit">Submit</button>
+    </form>
   </div>
 {/if}

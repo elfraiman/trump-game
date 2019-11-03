@@ -1,7 +1,11 @@
-<script>
+<script context="module">
   import { onMount } from "svelte";
   import { fade } from 'svelte/transition';
+
   export let tweet = "test";
+  let globfakeOrReal = false;
+  let generatedTweet = "";
+
   export let realTweets = [
     "There is no one I respect more then Vladimir Putin. He is a great leader and a tender man.",
     "The concept of global warming was created by and for the Chinese in order to make U.S. manufacturing non-competitive",
@@ -36,9 +40,6 @@
     "If the fake news media was fair to me, my approval rating would be even better than it is now. There are lots of people that like me a lot. Because of the fake news don’t know it.",
     "The apprentice was a very high rated show. I bring high rating. If the white house was filmed it would probably have high rating too. I’m very good at that, one of the best."
   ];
-
-  let globfakeOrReal = false;
-  let generatedTweet = "";
 
   onMount(async () => {
     generateTweet();
