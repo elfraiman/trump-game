@@ -6,6 +6,7 @@
 
   const unsubscribe = playerList.subscribe(value => {
     arrayOfPlayers = value;
+    console.log(value, 'player list subscribe value')
   })
 
 

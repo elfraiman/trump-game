@@ -1,3 +1,4 @@
+
 <style>
   .welcome-wrapper {
     display: grid;
@@ -57,7 +58,7 @@
 </style>
 
 <script>
-  import { playerList } from './store.js';
+  import { playerList } from "./store.js";
   import App from "./App.svelte";
 
   export let numberOfPlayers = 0;
@@ -71,22 +72,24 @@
   }
 
   function createPlayers() {
-    if (arrayOfPlayers.length > 0 ) {
+    // Resets array of players to an empty array
+    if (arrayOfPlayers.length > 0) {
       arrayOfPlayers = [];
     }
+
+
+    // Starts the id of the players at 1
     let num = 1;
-    let tempArray = new Array(numberOfPlayers).fill({id: num});
-
+    // Fill a new temp array
+    let tempArray = new Array(numberOfPlayers).fill({ id: num });
+    // Push the player objects 
     tempArray.forEach(player => {
-      arrayOfPlayers.push({id: num++, name: '', score: 0 })
-    })
+      arrayOfPlayers.push({ id: num++, name: "", score: 0 });
+    });
 
-    console.log(arrayOfPlayers);
     playerList.set(arrayOfPlayers);
   }
-
 </script>
-
 
 {#if renderGame}
   <App />
@@ -104,7 +107,10 @@
       {#if arrayOfPlayers.length > 0}
         <div class="player-inputs">
           {#each arrayOfPlayers as player (player.id)}
-            <input class="player-input" placeholder="Player {player.id} name" bind:value={player.name} />
+            <input
+              class="player-input"
+              placeholder="Player {player.id} name"
+              bind:value={player.name} />
           {/each}
         </div>
       {/if}

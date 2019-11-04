@@ -1,6 +1,6 @@
-<script context="module">
+<script>
   import { onMount } from "svelte";
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
 
   export let tweet = "test";
   let globfakeOrReal = false;
@@ -41,10 +41,6 @@
     "The apprentice was a very high rated show. I bring high rating. If the white house was filmed it would probably have high rating too. I’m very good at that, one of the best."
   ];
 
-  onMount(async () => {
-    generateTweet();
-  });
-
   function generateTweet() {
     // While real or fake have items keep playing
     if (realTweets.length > 0 && fakeTweets.length > 0) {
@@ -66,7 +62,7 @@
         fakeTweets.splice(randomIndex, 1);
       }
     } else {
-      generateTweet = 'Game Over!';
+      generateTweet = "Game Over!";
     }
   }
 
@@ -82,6 +78,10 @@
       generateTweet();
     }
   }
+
+  onMount(() => {
+    generateTweet();
+  });
 </script>
 
 <style>
@@ -126,7 +126,7 @@
 </style>
 
 <div class="card-wrapper">
-  <p transition:fade >{generatedTweet}</p>
+  <p transition:fade>{generatedTweet}</p>
   <div class="buttons">
     <button on:click={() => handleAnswer(false)}>Fake News</button>
     <button on:click={() => handleAnswer(true)}>Donald</button>
