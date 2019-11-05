@@ -1,20 +1,46 @@
+<script>
+  import { playerList } from "./store.js";
+  import App from "./App.svelte";
+
+  export let numberOfPlayers = 1;
+  let renderGame = true;
+  let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  export let arrayOfPlayers = [{ id: 1, name: "", score: 0 }];
+
+  function handleSubmit() {
+    renderGame = true;
+  }
+
+  function createPlayers() {
+    console.log("change");
+    // Resets array of players to an empty array
+    if (arrayOfPlayers.length > 0) {
+      arrayOfPlayers = [];
+    }
+
+    console.log(arrayOfPlayers, numberOfPlayers);
+
+    // Starts the id of the players at 1
+    let num = 1;
+    // Fill a new temp array
+    let tempArray = new Array(numberOfPlayers).fill({ id: num, name: '', score: 0 });
+    // Push the player objects
+    tempArray.forEach(player => {
+      arrayOfPlayers.push({ id: num++, name: "", score: 0 });
+    });
+
+    playerList.set(arrayOfPlayers);
+  }
+</script>
 
 <style>
   .welcome-wrapper {
-    display: grid;
+    display: grid;    
     justify-content: center;
     align-content: center;
     text-align: center;
     font-family: "Trumpfont", "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
       "Helvetica", "Arial", sans-serif;
-  }
-
-  input {
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    padding: 6px;
-    outline: none;
   }
 
   img {
@@ -54,42 +80,17 @@
 
   .player-input {
     margin: 6px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    padding: 6px;
+    outline: none;
+  }
+
+  select {
+    outline: none;
   }
 </style>
-
-<script>
-  import { playerList } from "./store.js";
-  import App from "./App.svelte";
-
-  export let numberOfPlayers = 0;
-  let renderGame = false;
-  let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  export let arrayOfPlayers = [];
-
-  function handleSubmit() {
-    renderGame = true;
-    console.log(arrayOfPlayers);
-  }
-
-  function createPlayers() {
-    // Resets array of players to an empty array
-    if (arrayOfPlayers.length > 0) {
-      arrayOfPlayers = [];
-    }
-
-
-    // Starts the id of the players at 1
-    let num = 1;
-    // Fill a new temp array
-    let tempArray = new Array(numberOfPlayers).fill({ id: num });
-    // Push the player objects 
-    tempArray.forEach(player => {
-      arrayOfPlayers.push({ id: num++, name: "", score: 0 });
-    });
-
-    playerList.set(arrayOfPlayers);
-  }
-</script>
 
 {#if renderGame}
   <App />
@@ -104,7 +105,7 @@
         {/each}
       </select>
 
-      {#if arrayOfPlayers.length > 0}
+      {#if numberOfPlayers}
         <div class="player-inputs">
           {#each arrayOfPlayers as player (player.id)}
             <input

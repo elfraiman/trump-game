@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
-
+  import { playerList, playerTurn } from ".././store.js";
   export let tweet = "test";
   let globfakeOrReal = false;
   let generatedTweet = "";
@@ -41,12 +41,17 @@
     "The apprentice was a very high rated show. I bring high rating. If the white house was filmed it would probably have high rating too. I’m very good at that, one of the best."
   ];
 
+  let playerTurnToPlay;
+  let players;
+
+  playerTurn.subscribe(turn => (playerTurnToPlay = turn));
+  playerList.subscribe(playersState => (players = playersState));
+
   function generateTweet() {
     // While real or fake have items keep playing
     if (realTweets.length > 0 && fakeTweets.length > 0) {
       // 1 real 2 fake
       const fakeOrReal = Math.floor(Math.random() * 2) + 1;
-      console.log(fakeOrReal, "fake or real");
       if (fakeOrReal === 1) {
         // Real
         globfakeOrReal = true;
@@ -57,24 +62,27 @@
         // Fake
         globfakeOrReal = false;
         const randomIndex = Math.floor(Math.random() * fakeTweets.length);
-        console.log(randomIndex, "random Index fake");
         generatedTweet = fakeTweets[randomIndex];
         fakeTweets.splice(randomIndex, 1);
       }
     } else {
-      generateTweet = "Game Over!";
+      generatedTweet = "Game Over!";
     }
   }
 
   function handleAnswer(answer) {
-    if (answer === true && globfakeOrReal === true) {
+    if (answer && globfakeOrReal) {
       alert("Correct");
+      console.log(playerTurnToPlay, "player turn");
+      handleScore(true);
       generateTweet();
-    } else if (answer === false && globfakeOrReal === false) {
+    } else if (!answer && !globfakeOrReal) {
       alert("Correct");
+      handleScore(true);
       generateTweet();
     } else {
       alert("Down it!");
+      handleScore(false);
       generateTweet();
     }
   }
@@ -82,23 +90,51 @@
   onMount(() => {
     generateTweet();
   });
+
+  function handleScore(handler) {
+    if (players) {
+      const player = players.find(val => val.id === playerTurnToPlay);
+
+      players.find(playerFromList => {
+        if (handler) {
+          playerFromList.id === player.id ? playerFromList.score++ : null;
+        } else {
+          playerFromList.id === player.id ? playerFromList.score-- : null;
+        }
+      });
+
+      if (playerTurnToPlay < players.length) {
+        playerTurnToPlay++;
+      } else {
+        playerTurnToPlay = 1;
+      }
+
+      // Since values are bond to each other in svelte all you need to do is update the store with itself
+      //
+      playerList.update(store => players);
+      playerTurn.update(turn => turn);
+    }
+  }
 </script>
 
 <style>
   .card-wrapper {
     display: grid;
-    grid-template-rows: 1fr 50px;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
     height: 100%;
+    grid-template-rows: 0.5fr 1fr 50px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 15px;
     background-color: #d81b60;
     color: white;
-    padding: 16px;
+    padding: 16px 16px 16px 16px;
     font-size: 25px;
     text-align: center;
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 65vh;
   }
 
   .buttons {
@@ -111,22 +147,39 @@
   button {
     width: 150px;
     height: 50px;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 20px;
+    color: white;
+    border-radius: 38px;
+    border: 2px solid white;
+    font-size: 16px;
+    padding: 14px;
     outline: none;
-    font-weight: 700;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background-color: inherit;
   }
   button:active {
-    box-shadow: none;
-    background-color: whitesmoke;
+    border-color: greenyellow;
+    color: greenyellow;
+  }
+
+  .img-div {
+    width: 100%;
+    background-image: url("images/trump_just_hair.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 170px;
+  }
+  .tweet {
+    min-height: 300px;
+    justify-self: start;
   }
 </style>
 
 <div class="card-wrapper">
-  <p transition:fade>{generatedTweet}</p>
+  <div class="img-div">
+  </div>
+  <div transition:fade class="tweet">
+    {generatedTweet}
+  </div>
   <div class="buttons">
     <button on:click={() => handleAnswer(false)}>Fake News</button>
     <button on:click={() => handleAnswer(true)}>Donald</button>
