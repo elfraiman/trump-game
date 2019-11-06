@@ -1,10 +1,12 @@
 <script>
   import { onMount } from "svelte";
-  import { fade } from "svelte/transition";
   import { playerList, playerTurn } from ".././store.js";
+  import { fade, fly } from 'svelte/transition';
+
   export let tweet = "test";
   let globfakeOrReal = false;
   let generatedTweet = "";
+  let cardAnimation = false;
 
   export let realTweets = [
     "There is no one I respect more then Vladimir Putin. He is a great leader and a tender man.",
@@ -73,23 +75,32 @@
   function handleAnswer(answer) {
     if (answer && globfakeOrReal) {
       alert("Correct");
-      console.log(playerTurnToPlay, "player turn");
       handleScore(true);
       generateTweet();
+      animateCard()
     } else if (!answer && !globfakeOrReal) {
       alert("Correct");
       handleScore(true);
+      animateCard()
       generateTweet();
     } else {
       alert("Down it!");
       handleScore(false);
       generateTweet();
+      animateCard()
     }
   }
 
   onMount(() => {
     generateTweet();
   });
+
+  function animateCard() {
+    cardAnimation = true;
+    setTimeout(() => {
+      cardAnimation = false;
+    }, 700);
+  }
 
   function handleScore(handler) {
     if (players) {
@@ -140,6 +151,7 @@
   .buttons {
     grid-row: 3/4;
     display: flex;
+    margin-top: 6px;
     justify-content: space-between;
     width: 100%;
   }
@@ -174,14 +186,13 @@
   }
 </style>
 
-<div class="card-wrapper">
-  <div class="img-div">
+{#if !cardAnimation}
+  <div class="card-wrapper" in:fade out:fly="{{ x: -500, duration: 600 }}">
+    <div class="img-div" />
+    <div class="tweet">{generatedTweet}</div>
+    <div class="buttons">
+      <button on:click={() => handleAnswer(false)}>Fake News</button>
+      <button on:click={() => handleAnswer(true)}>Donald</button>
+    </div>
   </div>
-  <div transition:fade class="tweet">
-    {generatedTweet}
-  </div>
-  <div class="buttons">
-    <button on:click={() => handleAnswer(false)}>Fake News</button>
-    <button on:click={() => handleAnswer(true)}>Donald</button>
-  </div>
-</div>
+{/if}

@@ -1,21 +1,14 @@
 <script>
   import Card from "./Card/Card.svelte";
   import { playerList, playerTurn } from "./store.js";
+  import { fade, fly } from 'svelte/transition';
 
   export let arrayOfPlayers;
-  export let currentPlayerTurn;
 
   const unsubscribe = playerList.subscribe(value => {
     arrayOfPlayers = value;
   });
 
-  const unsubPlayerTurn = playerTurn.subscribe(value => {
-    currentPlayerTurn = value;
-  });
-
-  function handleScore(value) {
-    console.log(value, "handleScore");
-  }
 </script>
 
 <style>
@@ -36,10 +29,11 @@
     grid-row: 2/3;
     justify-self: center;
   }
-
   .player-info {
     grid-row: 3/4;
     justify-self: center;
+    align-self: center;
+    margin-top: 6px;
   }
   .player {
     margin: 6px;
@@ -51,7 +45,7 @@
 
 <main>
   <img src="images/trump_wall.png" alt="trump hair" />
-  <div class="card-div">
+  <div class="card-div" in:fly="{{ y: 200, duration: 500}}" out:fade>
     <Card />
   </div>
 

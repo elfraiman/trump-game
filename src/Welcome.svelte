@@ -3,7 +3,7 @@
   import App from "./App.svelte";
 
   export let numberOfPlayers = 1;
-  let renderGame = true;
+  let renderGame = false;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   export let arrayOfPlayers = [{ id: 1, name: "", score: 0 }];
 
@@ -23,7 +23,11 @@
     // Starts the id of the players at 1
     let num = 1;
     // Fill a new temp array
-    let tempArray = new Array(numberOfPlayers).fill({ id: num, name: '', score: 0 });
+    let tempArray = new Array(numberOfPlayers).fill({
+      id: num,
+      name: "",
+      score: 0
+    });
     // Push the player objects
     tempArray.forEach(player => {
       arrayOfPlayers.push({ id: num++, name: "", score: 0 });
@@ -34,8 +38,11 @@
 </script>
 
 <style>
+  h2 {
+    color: white;
+  }
   .welcome-wrapper {
-    display: grid;    
+    display: grid;
     justify-content: center;
     align-content: center;
     text-align: center;
@@ -49,16 +56,16 @@
   }
 
   button {
-    width: 100%;
-    margin-top: 16px;
-    height: 30px;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
+    width: 150px;
+    height: 50px;
+    color: white;
+    border-radius: 38px;
+    border: 2px solid white;
+    font-size: 16px;
+    padding: 14px;
     outline: none;
-    font-weight: 700;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background-color: inherit;
+    margin-top: 16px;
   }
   button:active {
     box-shadow: none;
@@ -79,12 +86,13 @@
   }
 
   .player-input {
-    margin: 6px;
+    grid-row: 3/4;
     height: 30px;
     border: none;
     border-radius: 5px;
     padding: 6px;
     outline: none;
+    margin-top: 6px;
   }
 
   select {
@@ -116,7 +124,7 @@
         </div>
       {/if}
 
-      <button type="submit">Submit</button>
+      <button type="submit">Play</button>
     </form>
   </div>
 {/if}
