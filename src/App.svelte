@@ -17,6 +17,7 @@
     height: 100vh;
     padding: 16px;
     grid-template: 0.2fr 1fr 0.2fr / auto;
+    overflow: hidden;
   }
 
   img {
@@ -49,7 +50,7 @@
     <Card />
   </div>
 
-  <div class="player-info">
+  <div class="player-info" in:fly="{{ y: 200, duration: 500}}" out:fade>
     {#if arrayOfPlayers}
       {#each arrayOfPlayers as player}
         <span class="player">{player.name.toUpperCase()}: <span style="color: red">{player.score}</span></span>

@@ -3,7 +3,7 @@
   import App from "./App.svelte";
 
   export let numberOfPlayers = 1;
-  let renderGame = false;
+  let renderGame = true;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   export let arrayOfPlayers = [{ id: 1, name: "", score: 0 }];
 
@@ -43,15 +43,14 @@
   }
   .welcome-wrapper {
     display: grid;
+    justify-self: center;
     justify-content: center;
-    align-content: center;
     text-align: center;
     font-family: "Trumpfont", "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
       "Helvetica", "Arial", sans-serif;
   }
 
   img {
-    width: 300px;
     padding: 26px;
   }
 
@@ -65,7 +64,7 @@
     padding: 14px;
     outline: none;
     background-color: inherit;
-    margin-top: 16px;
+    margin: 16px;
   }
   button:active {
     box-shadow: none;
@@ -85,6 +84,12 @@
     flex-direction: column;
   }
 
+  form {
+    justify-self: center;
+    min-width: 300px;
+    width: 500px;
+  }
+
   .player-input {
     grid-row: 3/4;
     height: 30px;
@@ -97,6 +102,16 @@
 
   select {
     outline: none;
+  }
+
+  @media only screen and (max-width: 600px) {
+    img {
+      width: 300px;
+    }
+
+    form {
+      width: 300px;
+    }
   }
 </style>
 

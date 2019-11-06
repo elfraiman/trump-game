@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { playerList, playerTurn } from ".././store.js";
-  import { fade, fly } from 'svelte/transition';
+  import { fade, fly } from "svelte/transition";
 
   export let tweet = "test";
   let globfakeOrReal = false;
@@ -77,17 +77,17 @@
       alert("Correct");
       handleScore(true);
       generateTweet();
-      animateCard()
+      animateCard();
     } else if (!answer && !globfakeOrReal) {
       alert("Correct");
       handleScore(true);
-      animateCard()
+      animateCard();
       generateTweet();
     } else {
       alert("Down it!");
       handleScore(false);
       generateTweet();
-      animateCard()
+      animateCard();
     }
   }
 
@@ -99,7 +99,7 @@
     cardAnimation = true;
     setTimeout(() => {
       cardAnimation = false;
-    }, 700);
+    }, 600);
   }
 
   function handleScore(handler) {
@@ -184,12 +184,34 @@
     min-height: 300px;
     justify-self: start;
   }
+
+  @media only screen and (max-width: 600px) {
+    .card-wrapper {
+      max-height: 200px;
+      min-height: 55vh;
+    }
+
+    .tweet {
+      min-height: 200px;
+      font-size: 18px;
+    }
+
+    .img-div {
+      height: 120px;
+    }
+
+    button {
+      font-size: 15px;
+      height: 40px;
+      padding: 6px;
+    }
+  }
 </style>
 
 {#if !cardAnimation}
-  <div class="card-wrapper" in:fade out:fly="{{ x: -500, duration: 600 }}">
+  <div class="card-wrapper" in:fade out:fly={{ x: -500, duration: 600 }}>
     <div class="img-div" />
-    <div class="tweet">{generatedTweet}</div>
+    <div class="tweet">"{generatedTweet}"</div>
     <div class="buttons">
       <button on:click={() => handleAnswer(false)}>Fake News</button>
       <button on:click={() => handleAnswer(true)}>Donald</button>
