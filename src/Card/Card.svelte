@@ -146,7 +146,6 @@
     min-height: 500px;
     max-width: 500px;
     max-height: 500px;
-
   }
 
   .buttons {
@@ -168,8 +167,7 @@
     padding: 14px;
     outline: none;
     background-color: inherit;
-        font-family: 'Trumpfont', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-    'Arial', sans-serif;
+    font-family: "Trumpfont";
   }
   button:active {
     border-color: greenyellow;
@@ -190,7 +188,6 @@
 
   @media only screen and (max-width: 600px) {
     .card-wrapper {
-
     }
 
     .tweet {

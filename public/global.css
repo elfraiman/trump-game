@@ -8,11 +8,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: #00b0ff;
+  font-family: 'Trumpfont', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+  'Arial', sans-serif;
 }
 
 main {
-  font-family: 'Trumpfont', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-    'Arial', sans-serif;
   line-height: 1.65;
   min-height: 100vh;
 }
