@@ -19,7 +19,18 @@
     "wonderful.mp3",
     "mill.mp3"
   ];
-  let negativeAudioList = ["wrong.mp3", "what.mp3", "what-do-you-have-to-lose.mp3", "were-stupid.mp3", "we-need-money.mp3", "unemployed.mp3", "liars.mp3", "stupid.mp3", "illegal.mp3", "disgrace.mp3"];
+  let negativeAudioList = [
+    "wrong.mp3",
+    "what.mp3",
+    "what-do-you-have-to-lose.mp3",
+    "were-stupid.mp3",
+    "we-need-money.mp3",
+    "unemployed.mp3",
+    "liars.mp3",
+    "stupid.mp3",
+    "illegal.mp3",
+    "disgrace.mp3"
+  ];
 
   export let realTweets = [
     "There is no one I respect more then Vladimir Putin. He is a great leader and a tender man.",
@@ -102,21 +113,21 @@
 
   function handleAnswer(answer) {
     if (answer && globfakeOrReal) {
-      alert("Correct");
+      playAudio(true);
       handleScore(true);
+      alert("Correct");
       generateTweet();
       animateCard();
-      playAudio(true);
     } else if (!answer && !globfakeOrReal) {
-      alert("Correct");
+      playAudio(true);
       handleScore(true);
+      alert("Correct");
       animateCard();
       generateTweet();
-      playAudio(true);
     } else {
-      alert("Down it!");
-      handleScore(false);
       playAudio(false);
+      handleScore(false);
+      alert("Down it!");
       generateTweet();
       animateCard();
     }
