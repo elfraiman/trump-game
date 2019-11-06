@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Trumpfont';
-  src: url(fonts/trumpfont.otf) format('opentype')
+  src: url(fonts/trumpfont.otf) format('opentype');
+  font-weight: 300;
 }
 
 body {
