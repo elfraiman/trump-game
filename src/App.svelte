@@ -16,24 +16,18 @@
     display: grid;
     height: 100vh;
     padding: 16px;
-    grid-template: 0.2fr 1fr 0.2fr / auto;
+    grid-template: 0.8fr 0.2fr / 1fr;
     overflow: hidden;
   }
 
-  img {
-    grid-row: 1/2;
-    justify-self: center;
-    width: 300px;
-  }
-
   .card-div {
-    grid-row: 2/3;
+    grid-row: 1/2;
     justify-self: center;
   }
   .player-info {
-    grid-row: 3/4;
     justify-self: center;
-    align-self: center;
+    text-align: center;
+    align-self: start;
     margin-top: 6px;
   }
   .player {
@@ -45,7 +39,6 @@
 </style>
 
 <main>
-  <img src="images/trump_wall.png" alt="trump hair" />
   <div class="card-div" in:fly="{{ y: 200, duration: 500}}" out:fade>
     <Card />
   </div>

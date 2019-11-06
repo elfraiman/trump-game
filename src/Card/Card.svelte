@@ -131,8 +131,8 @@
 <style>
   .card-wrapper {
     display: grid;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
     height: 100%;
-    grid-template-rows: 0.5fr 1fr 50px;
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -145,7 +145,7 @@
     text-align: center;
     min-width: 300px;
     max-width: 500px;
-    min-height: 65vh;
+    max-height: 500px;
   }
 
   .buttons {
@@ -153,6 +153,7 @@
     display: flex;
     margin-top: 6px;
     justify-content: space-between;
+    align-self: end;
     width: 100%;
   }
 
@@ -181,17 +182,15 @@
     height: 170px;
   }
   .tweet {
-    min-height: 300px;
     justify-self: start;
   }
 
   @media only screen and (max-width: 600px) {
     .card-wrapper {
-      min-height: 55vh;
+
     }
 
     .tweet {
-      min-height: 200px;
       font-size: 18px;
     }
 
