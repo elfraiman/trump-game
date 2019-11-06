@@ -187,7 +187,6 @@
 
   @media only screen and (max-width: 600px) {
     .card-wrapper {
-      max-height: 200px;
       min-height: 55vh;
     }
 
