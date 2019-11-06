@@ -5,11 +5,12 @@
   export let numberOfPlayers = 1;
   let renderGame = false;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  let intro = true;
   export let arrayOfPlayers = [{ id: 1, name: "", score: 0 }];
 
   function handleSubmit() {
     renderGame = true;
-    alert("Turn your sound on for extra trump goodness!")
+    alert("Turn your sound on for extra trump goodness!");
   }
 
   function createPlayers() {
@@ -35,6 +36,10 @@
     });
 
     playerList.set(arrayOfPlayers);
+  }
+
+  function passIntro() {
+    intro = false;
   }
 </script>
 
@@ -119,6 +124,15 @@
     outline: none;
   }
 
+  .intro {
+    text-align: center;
+  }
+
+  ul {
+    text-align: start;
+    color: white;
+  }
+
   @media only screen and (max-width: 600px) {
     img {
       width: 300px;
@@ -132,7 +146,7 @@
 
 {#if renderGame}
   <App />
-{:else}
+{:else if !renderGame && !intro}
   <div class="welcome-wrapper">
     <h2>Down or Donald</h2>
     <img src="images/trump_guns.png" alt="trump" />
@@ -156,5 +170,21 @@
 
       <button type="submit">Play</button>
     </form>
+  </div>
+{:else}
+  <div class="intro">
+    <h2>Rules</h2>
+    <ul>
+      <li>You must guess if the quote is a real trump quote or a fake</li>
+      <li>If you run out of time, take a shot</li>
+      <li>If you get the answer wrong, take a shot</li>
+      <li>NO PHONES! if a player touches his phone he must take a shot!</li>
+      <li>Each player plays at his turn NO HELPING, if a player blurps the answer he takes a shot!</li>
+      <li>Once you click ok to dismiss the alert GET READY! The timer will start</li>
+      <li>Winner will not be impeached</li>
+      <li>Have fun!</li>
+    </ul>
+
+    <button on:click={passIntro}>Play</button>
   </div>
 {/if}
