@@ -97,6 +97,9 @@
     padding: 6px;
     outline: none;
     margin-top: 6px;
+    background-color: inherit;
+    border: 2px solid white;
+    color: white;
   }
 
   select {

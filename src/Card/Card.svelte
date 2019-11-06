@@ -7,6 +7,19 @@
   let globfakeOrReal = false;
   let generatedTweet = "";
   let cardAnimation = false;
+  let positiveAudioList = [
+    "believe-me.mp3",
+    "hillary.mp3",
+    "im-really-rich.mp3",
+    "okay.mp3",
+    "smart-people.mp3",
+    "president.mp3",
+    "victory.mp3",
+    "dream.mp3",
+    "wonderful.mp3",
+    "mill.mp3"
+  ];
+  let negativeAudioList = ["wrong.mp3", "what.mp3", "what-do-you-have-to-lose.mp3", "were-stupid.mp3", "we-need-money.mp3", "unemployed.mp3", "liars.mp3", "stupid.mp3", "illegal.mp3", "disgrace.mp3"];
 
   export let realTweets = [
     "There is no one I respect more then Vladimir Putin. He is a great leader and a tender man.",
@@ -72,20 +85,38 @@
     }
   }
 
+  function playAudio(answer) {
+    let audio;
+    if (answer) {
+      let randNum = Math.floor(Math.random() * positiveAudioList.length);
+      let positiveRandomClip = positiveAudioList[randNum];
+      audio = new Audio(`audio/${positiveRandomClip}`);
+    } else {
+      let randNum = Math.floor(Math.random() * negativeAudioList.length);
+      let negativeRandomClip = negativeAudioList[randNum];
+      audio = new Audio(`audio/${negativeRandomClip}`);
+    }
+
+    audio.play();
+  }
+
   function handleAnswer(answer) {
     if (answer && globfakeOrReal) {
       alert("Correct");
       handleScore(true);
       generateTweet();
       animateCard();
+      playAudio(true);
     } else if (!answer && !globfakeOrReal) {
       alert("Correct");
       handleScore(true);
       animateCard();
       generateTweet();
+      playAudio(true);
     } else {
       alert("Down it!");
       handleScore(false);
+      playAudio(false);
       generateTweet();
       animateCard();
     }
@@ -187,9 +218,6 @@
   }
 
   @media only screen and (max-width: 600px) {
-    .card-wrapper {
-    }
-
     .tweet {
       font-size: 18px;
     }
