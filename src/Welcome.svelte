@@ -65,6 +65,8 @@
     outline: none;
     background-color: inherit;
     margin: 16px;
+     font-family: 'Trumpfont', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+    'Arial', sans-serif;
   }
   button:active {
     box-shadow: none;
