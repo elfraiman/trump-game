@@ -43,7 +43,7 @@
   <div class="player-info" in:fly="{{ y: 200, duration: 500}}" out:fade>
     {#if arrayOfPlayers}
       {#each arrayOfPlayers as player}
-        <span class="player">{player.name.toUpperCase()}: <span style="color: red">{player.score}</span></span>
+        <span class="player">{player.name.toUpperCase()}: <span style={player.score < 0 ? "color: red" : "color: #b2ff59"}>{player.score}</span></span>
       {/each}
     {/if}
   </div>

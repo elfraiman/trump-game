@@ -46,7 +46,7 @@
     justify-self: center;
     justify-content: center;
     text-align: center;
-    font-family: "Trumpfont", "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
+    font-family: 'Trumpfont', "SF Pro Text", "SF Pro Icons", "Helvetica Neue",
       "Helvetica", "Arial", sans-serif;
   }
 
