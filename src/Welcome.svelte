@@ -38,8 +38,8 @@
     playerList.set(arrayOfPlayers);
   }
 
-  function passIntro() {
-    intro = false;
+  function passIntro(answer) {
+    intro = !answer;
   }
 </script>
 
@@ -169,6 +169,7 @@
       {/if}
 
       <button type="submit">Play</button>
+      <button on:click={() => passIntro(false)}>Rules</button>
     </form>
   </div>
 {:else}
@@ -179,12 +180,17 @@
       <li>If you run out of time, take a shot</li>
       <li>If you get the answer wrong, take a shot</li>
       <li>NO PHONES! if a player touches his phone he must take a shot!</li>
-      <li>Each player plays at his turn NO HELPING, if a player blurps the answer he takes a shot!</li>
-      <li>Once you click ok to dismiss the alert GET READY! The timer will start</li>
+      <li>
+        Each player plays at his turn NO HELPING, if a player blurps the answer
+        he takes a shot!
+      </li>
+      <li>
+        Once you click ok to dismiss the alert GET READY! The timer will start
+      </li>
       <li>Winner will not be impeached</li>
       <li>Have fun!</li>
     </ul>
 
-    <button on:click={passIntro}>Play</button>
+    <button on:click={() => passIntro(true)}>Play</button>
   </div>
 {/if}
