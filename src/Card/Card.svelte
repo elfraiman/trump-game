@@ -132,7 +132,6 @@
   .card-wrapper {
     display: grid;
     grid-template-rows: 0.5fr 1fr 0.5fr;
-    height: 100%;
     justify-content: center;
     justify-items: center;
     align-items: center;
