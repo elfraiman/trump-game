@@ -182,8 +182,7 @@
       <li>If you get the answer wrong, take a shot</li>
       <li>NO PHONES! if a player touches his phone he must take a shot!</li>
       <li>
-        Each player plays at his turn NO HELPING, if a player blurps the answer
-        he takes a shot!
+        NO HELPING, if a player blurps the answer he takes a shot!
       </li>
       <li>
         Once you click ok to dismiss the alert GET READY! The timer will start
