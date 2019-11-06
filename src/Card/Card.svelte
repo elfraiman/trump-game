@@ -143,6 +143,7 @@
     font-size: 25px;
     text-align: center;
     min-width: 300px;
+    min-height: 500px;
     max-width: 500px;
     max-height: 500px;
   }

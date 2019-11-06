@@ -13,19 +13,16 @@
 
 <style>
   main {
-    display: grid;
     height: 100vh;
     padding: 16px;
-    grid-template: 0.8fr 0.2fr / 1fr;
     overflow: hidden;
   }
 
   .card-div {
-    grid-row: 1/2;
-    justify-self: center;
+    display: flex;
+    justify-content: center;
   }
   .player-info {
-    justify-self: center;
     text-align: center;
     align-self: start;
     margin-top: 6px;
