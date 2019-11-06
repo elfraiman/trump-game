@@ -7,6 +7,7 @@
   let globfakeOrReal = false;
   let generatedTweet = "";
   let cardAnimation = false;
+  let gameOver = false;
   let positiveAudioList = [
     "believe-me.mp3",
     "hillary.mp3",
@@ -92,7 +93,8 @@
         fakeTweets.splice(randomIndex, 1);
       }
     } else {
-      generatedTweet = "Game Over!";
+      gameOver = true;
+      generateTweet = "";
     }
   }
 
@@ -135,6 +137,7 @@
 
   onMount(() => {
     generateTweet();
+    gameOver = false;
   });
 
   function animateCard() {
@@ -245,7 +248,7 @@
   }
 </style>
 
-{#if !cardAnimation}
+{#if !cardAnimation && !gameOver}
   <div class="card-wrapper" in:fade out:fly={{ x: -500, duration: 600 }}>
     <div class="img-div" />
     <div class="tweet">"{generatedTweet}"</div>

@@ -9,6 +9,7 @@
 
   function handleSubmit() {
     renderGame = true;
+    alert("Turn your sound on for extra trump goodness!")
   }
 
   function createPlayers() {
@@ -99,6 +100,18 @@
     margin-top: 6px;
     background-color: inherit;
     border: 2px solid white;
+    color: white;
+    font-size: 15px;
+  }
+
+  ::placeholder {
+    color: white;
+  }
+  ::-webkit-input-placeholder {
+    color: white;
+  }
+
+  :-ms-input-placeholder {
     color: white;
   }
 
