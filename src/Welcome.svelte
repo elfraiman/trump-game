@@ -126,6 +126,7 @@
 
   .intro {
     text-align: center;
+    padding: 16px;
   }
 
   ul {
