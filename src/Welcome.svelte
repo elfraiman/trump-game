@@ -1,6 +1,7 @@
 <script>
   import { playerList } from "./store.js";
   import App from "./App.svelte";
+  import Donate from './Donate/DonateButton.svelte';
 
   export let numberOfPlayers = 1;
   let renderGame = false;
@@ -143,7 +144,7 @@
     font-size: 14px;
     color: white;
     position: absolute;
-    bottom: 16px;
+    bottom: 2px;
   }
 
   @media only screen and (max-width: 600px) {
@@ -205,6 +206,6 @@
     <p style="color: #ffff00">
       BETA VERSION 1.0 - Release date 10 November 2019
     </p>
-    <p class="contact-info">Contact & Information - elfraiman@gmail.com</p>
+    <p class="contact-info">Contact & Information - elfraiman@gmail.com <Donate /> </p>
   </div>
 {/if}

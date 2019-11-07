@@ -1,5 +1,6 @@
 <script>
   import Card from "./Card/Card.svelte";
+  import Donate from "./Donate/DonateButton.svelte";
   import { playerList, playerTurn } from "./store.js";
   import { fade, fly } from "svelte/transition";
 
@@ -77,4 +78,5 @@
     {/if}
   </div>
 </main>
-<p class="contact-info">BETA VERSION - Contact - elfraiman@gmail.com</p>
+<p class="contact-info">BETA VERSION - Contact - elfraiman@gmail.com <Donate /></p>
+
