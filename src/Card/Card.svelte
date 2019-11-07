@@ -48,7 +48,33 @@
     "If you look at Saddam Hussein, he killed terrorists. I'm not saying he was an angel, but this guy killed terrorists.",
     "While Bette Midler is an extremely unattractive woman, I refuse to say that because I always insist on being politically correct.",
     "Just tried watching Modern Family - written by a moron, really boring. Writer has the mind of a very dumb and backward child. Sorry Danny!",
-    "Sorry losers and haters, but my IQ is one of the highest - and you all know it! Please don't feel so stupid or insecure, it's not your fault."
+    "Sorry losers and haters, but my IQ is one of the highest - and you all know it! Please don't feel so stupid or insecure, it's not your fault.",
+    "She does have a very nice figure. I’ve said if Ivanka weren’t my daughter, perhaps I’d be dating her.",
+    "I have black guys counting my money. … I hate it. The only guys I want counting my money are short guys that wear yarmulkes all day.",
+    "Our great African-American president hasn’t exactly had a positive impact on the thugs who are so happily and openly destroying Baltimore.",
+    "I could stand in the middle of Fifth Avenue and shoot people and I wouldn't lose voters.",
+    "Lyin' Ted Cruz just used a picture of Melania from a G.Q. shoot in his ad. Be careful, Lyin' Ted, or I will spill the beans on your wife!",
+    "And he referred to my hands, if they are small, something else must be small. I guarantee you there’s no problem. I guarantee.",
+    "26,000 unreported sexual assults in the military-only 238 convictions. What did these geniuses expect when they put men & women together?",
+    "A person who is very flat-chested is very hard to be a 10.",
+    "She had the height, she had the beauty, she had the skin – the whole thing. She was crazy, but these are minor details.",
+    "You know, it really doesn’t matter what the media write as long as you’ve got a young and beautiful piece of ass.",
+    "The problem is we have the Geneva Conventions, all sorts of rules and regulations, so the soldiers are afraid to fight.",
+    "You know I’m automatically attracted to beautiful—I just start kissing them. It’s like a magnet. Just kiss. I don’t even wait.",
+    "I’ve been treated very unfairly by this judge. Now, this judge is of Mexican heritage. I'm building a wall, OK? I'm building a wall.",
+    "I'm also honored to have the greatest temperament that anybody has.",
+    "Women: You have to treat them like s**t.",
+    "I know more about ISIS than the generals do, believe me...I would bomb the sh**t out of them.",
+    "I've had a beautiful, I've had a flawless campaign. You'll be writing books about this campaign.",
+    "Happy Cinco de Mayo! The best taco bowls are made in Trump Tower Grill. I love Hispanics!",
+    "These people—I'd like to use really foul language. I won't do it. I was going to say they're really full of s**t, but I won't say that.",
+    "It is better to live one day as a lion than 100 years as a sheep.",
+    "All of the women on 'The Apprentice' flirted with me—consciously or unconsciously. That's to be expected.",
+    "The beauty of me is that I'm very rich.",
+    "I like kids. I mean, I won’t do anything to take care of them. I’ll supply funds, and she’ll take care of the kids.",
+    "I will be the greatest jobs president that God ever created.",
+    "I don't think I'm going to lose, but if I do, I don't think you're ever going to see me again, folks. I think I'll go to Turnberry and play golf or something.",
+    "I don’t think I’ve made mistakes. Every time somebody said I made a mistake, they do the polls and my numbers go up, so I guess I haven't made any mistakes."
   ];
 
   export let fakeTweets = [
@@ -65,7 +91,11 @@
     "Melania is my third wife, the best so far. Newer is always better right? I think it is, we’ll know for sure if the next one is better.",
     "I don’t like bananas, I’ve never had one but I know I wouldn’t like it. I just know these things. I have a special sense for what I like and I don’t like them.",
     "If the fake news media was fair to me, my approval rating would be even better than it is now. There are lots of people that like me a lot. Because of the fake news don’t know it.",
-    "The apprentice was a very high rated show. I bring high rating. If the white house was filmed it would probably have high rating too. I’m very good at that, one of the best."
+    "The apprentice was a very high rated show. I bring high rating. If the white house was filmed it would probably have high rating too. I’m very good at that, one of the best.",
+    "Beautiful women love me, and I love them. It's probably because we have that in common, being beautiful",
+    "Folks it's a shame we don't have kings anymore, a lot of people don't know we used to have kings. I would make great king",
+    "My sons are great, they have me as a dad so ofcourse they are. Some would even say that's the best thing about them",
+    "I can't be impeached, Obama was not impeached and I'm doing twice the job he did. I'm doing incredible, far too good to be impeached"
   ];
 
   let playerTurnToPlay;
