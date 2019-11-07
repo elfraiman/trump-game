@@ -95,7 +95,10 @@
     "Beautiful women love me, and I love them. It's probably because we have that in common, being beautiful",
     "Folks it's a shame we don't have kings anymore, a lot of people don't know we used to have kings. I would make great king",
     "My sons are great, they have me as a dad so ofcourse they are. Some would even say that's the best thing about them",
-    "I can't be impeached, Obama was not impeached and I'm doing twice the job he did. I'm doing incredible, far too good to be impeached"
+    "I can't be impeached, Obama was not impeached and I'm doing twice the job he did. I'm doing incredible, far too good to be impeached",
+    "No president has ever been treated as badly as I have been treated. Some were shot yes, but what happens to me is worse, much worse.",
+    "I'm a very good businessman, not because my numbers are good, they are tremendous numbers, you wouldn't believe, but my business is what makes me a good businessman.",
+    "I'm one of the best in branding, probably the best out there, I have done great branding for America, the same as I did for the Trump brand, gave it some class a lot of class."
   ];
 
   let playerTurnToPlay;
