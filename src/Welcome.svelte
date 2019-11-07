@@ -197,5 +197,7 @@
     </ul>
 
     <button on:click={() => passIntro(true)}>Play</button>
+    <p style="color: #ffff00">BETA VERSION 1.0 - Release date 10 November 2019</p>
+    <p style="font-size: 14px; color: black; position: absolute; bottom: 16px">Contact & Information - elfraiman@gmail.com</p>
   </div>
 {/if}

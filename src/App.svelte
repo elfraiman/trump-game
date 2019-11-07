@@ -51,7 +51,7 @@
       {#each arrayOfPlayers as player}
         <span
           class="player"
-          style={player.id === playerTurnToPlay ? 'color: #263238' : 'color: white'}>
+          style={player.id === playerTurnToPlay ? 'color: #ffff00' : 'color: white'}>
           {player.name.toUpperCase()}:
           <span style={player.score < 0 ? 'color: #d50000' : 'color: #64dd17'}>
             {player.score}
