@@ -22,8 +22,13 @@
     height: 100vh;
     padding: 16px;
     overflow: hidden;
+    text-align: center;
   }
 
+  h2 {
+    color: white;
+    margin-top: 4px;
+  }
   .card-div {
     display: flex;
     justify-content: center;
@@ -31,7 +36,7 @@
   .player-info {
     text-align: center;
     align-self: start;
-    margin-top: 6px;
+    margin-top: 4px;
   }
   .player {
     margin: 6px;
@@ -42,6 +47,7 @@
 </style>
 
 <main>
+  <h2>Make shots great again!</h2>
   <div class="card-div" in:fly={{ y: 200, duration: 500 }} out:fade>
     <Card />
   </div>

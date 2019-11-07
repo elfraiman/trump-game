@@ -154,7 +154,7 @@
   <App />
 {:else if !renderGame && !intro}
   <div class="welcome-wrapper">
-    <h2>Down or Donald</h2>
+    <h2>Make shots great again!</h2>
     <img src="images/trump_guns.png" alt="trump" />
     <form on:submit|preventDefault={handleSubmit}>
       <select bind:value={numberOfPlayers} on:change={createPlayers}>
