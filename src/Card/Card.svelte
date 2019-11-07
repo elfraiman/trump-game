@@ -198,7 +198,7 @@
       // Since values are bond to each other in svelte all you need to do is update the store with itself
       //
       playerList.update(store => players);
-      playerTurn.update(turn => turn = playerTurnToPlay);
+      playerTurn.update(turn => playerTurnToPlay);
     }
   }
 </script>
