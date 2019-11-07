@@ -194,7 +194,7 @@
       <li>If you run out of time, take a shot</li>
       <li>If you get the answer wrong, take a shot</li>
       <li>NO PHONES! if a player touches his phone he must take a shot!</li>
-      <li>NO HELPING, if a player blurps the answer he takes a shot!</li>
+      <li>NO HELPING, if a player blurts the answer he takes a shot!</li>
       <li>
         Once you click ok to dismiss the alert GET READY! The timer will start
       </li>
