@@ -44,6 +44,16 @@
     color: white;
     font-weight: 700;
   }
+
+  .contact-info {
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    bottom: 6px;
+    text-align: center;
+    width: 100%;
+    opacity: 0.5;
+  }
 </style>
 
 <main>
@@ -67,3 +77,4 @@
     {/if}
   </div>
 </main>
+<p class="contact-info">BETA VERSION - Contact - elfraiman@gmail.com</p>

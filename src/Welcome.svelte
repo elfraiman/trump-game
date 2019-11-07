@@ -139,6 +139,13 @@
     color: white;
   }
 
+  .contact-info {
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    bottom: 16px;
+  }
+
   @media only screen and (max-width: 600px) {
     img {
       width: 300px;
@@ -186,9 +193,7 @@
       <li>If you run out of time, take a shot</li>
       <li>If you get the answer wrong, take a shot</li>
       <li>NO PHONES! if a player touches his phone he must take a shot!</li>
-      <li>
-        NO HELPING, if a player blurps the answer he takes a shot!
-      </li>
+      <li>NO HELPING, if a player blurps the answer he takes a shot!</li>
       <li>
         Once you click ok to dismiss the alert GET READY! The timer will start
       </li>
@@ -197,7 +202,9 @@
     </ul>
 
     <button on:click={() => passIntro(true)}>Play</button>
-    <p style="color: #ffff00">BETA VERSION 1.0 - Release date 10 November 2019</p>
-    <p style="font-size: 14px; color: white; position: absolute; bottom: 16px">Contact & Information - elfraiman@gmail.com</p>
+    <p style="color: #ffff00">
+      BETA VERSION 1.0 - Release date 10 November 2019
+    </p>
+    <p class="contact-info">Contact & Information - elfraiman@gmail.com</p>
   </div>
 {/if}
