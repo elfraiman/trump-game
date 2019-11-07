@@ -1,14 +1,20 @@
 <script>
   import Card from "./Card/Card.svelte";
   import { playerList, playerTurn } from "./store.js";
-  import { fade, fly } from 'svelte/transition';
+  import { fade, fly } from "svelte/transition";
 
   export let arrayOfPlayers;
+
+  let playerTurnToPlay = 1;
+
+  playerTurn.subscribe(turn => {
+    console.log(turn, playerTurnToPlay);
+    playerTurnToPlay = turn;
+  });
 
   const unsubscribe = playerList.subscribe(value => {
     arrayOfPlayers = value;
   });
-
 </script>
 
 <style>
@@ -36,14 +42,21 @@
 </style>
 
 <main>
-  <div class="card-div" in:fly="{{ y: 200, duration: 500}}" out:fade>
+  <div class="card-div" in:fly={{ y: 200, duration: 500 }} out:fade>
     <Card />
   </div>
 
-  <div class="player-info" in:fly="{{ y: 200, duration: 500}}" out:fade>
+  <div class="player-info" in:fly={{ y: 200, duration: 500 }} out:fade>
     {#if arrayOfPlayers}
       {#each arrayOfPlayers as player}
-        <span class="player">{player.name.toUpperCase()}: <span style={player.score < 0 ? "color: red" : "color: #b2ff59"}>{player.score}</span></span>
+        <span
+          class="player"
+          style={player.id === playerTurnToPlay ? 'color: #263238' : 'color: white'}>
+          {player.name.toUpperCase()}:
+          <span style={player.score < 0 ? 'color: #d50000' : 'color: #64dd17'}>
+            {player.score}
+          </span>
+        </span>
       {/each}
     {/if}
   </div>
