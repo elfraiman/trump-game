@@ -21,6 +21,7 @@
 <style>
   main {
     height: 100vh;
+    width: 100%;
     padding: 16px;
     overflow: hidden;
     text-align: center;
@@ -50,10 +51,10 @@
     font-size: 14px;
     color: white;
     position: absolute;
-    bottom: 6px;
     text-align: center;
     width: 100%;
     opacity: 0.5;
+    margin-top: 16px;
   }
 </style>
 
@@ -77,6 +78,8 @@
       {/each}
     {/if}
   </div>
+
+  <p class="contact-info">BETA VERSION - Contact - elfraiman@gmail.com <Donate /></p>
 </main>
-<p class="contact-info">BETA VERSION - Contact - elfraiman@gmail.com <Donate /></p>
+
 
