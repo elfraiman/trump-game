@@ -7,10 +7,14 @@
   let renderGame = false;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let intro = true;
+
   export let arrayOfPlayers = [{ id: 1, name: "", score: 0 }];
 
   function handleSubmit() {
     renderGame = true;
+    if (arrayOfPlayers.length === 1) {
+      playerList.set(arrayOfPlayers);
+    }
     alert("Turn your sound on for extra trump goodness!");
   }
 
@@ -20,8 +24,6 @@
     if (arrayOfPlayers.length > 0) {
       arrayOfPlayers = [];
     }
-
-    console.log(arrayOfPlayers, numberOfPlayers);
 
     // Starts the id of the players at 1
     let num = 1;
@@ -175,6 +177,7 @@
         <div class="player-inputs">
           {#each arrayOfPlayers as player (player.id)}
             <input
+              required
               class="player-input"
               placeholder="Player {player.id} name"
               bind:value={player.name} />
@@ -204,7 +207,7 @@
 
     <button on:click={() => passIntro(true)}>Play</button>
     <p style="color: #ffff00">
-      BETA VERSION 1.0 - Release date 10 November 2019
+      BETA VERSION 1.0
     </p>
     <p class="contact-info">Contact & Information - elfraiman@gmail.com <Donate /> </p>
   </div>

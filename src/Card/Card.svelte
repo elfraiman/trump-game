@@ -3,13 +3,12 @@
   import { playerList, playerTurn } from ".././store.js";
   import { fade, fly } from "svelte/transition";
 
-  export let tweet = "test";
   let globfakeOrReal = false;
   let generatedTweet = "";
   let cardAnimation = false;
   let gameOver = false;
   let intervalTrigger;
-  let defaultTimeForTimer = 10;
+  let defaultTimeForTimer = 15;
   let timer = defaultTimeForTimer;
   let positiveAudioList = [
     "believe-me.mp3",

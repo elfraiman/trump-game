@@ -13,7 +13,7 @@
     playerTurnToPlay = turn;
   });
 
-  const unsubscribe = playerList.subscribe(value => {
+  playerList.subscribe(value => {
     arrayOfPlayers = value;
   });
 </script>
