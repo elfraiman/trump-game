@@ -193,13 +193,13 @@
   <div class="intro">
     <h2>Rules</h2>
     <ul>
-      <li>You must guess if the quote is a real trump quote or a fake</li>
-      <li>If you run out of time, take a shot</li>
-      <li>If you get the answer wrong, take a shot</li>
-      <li>NO PHONES! if a player touches his phone he must take a shot!</li>
-      <li>NO HELPING, if a player blurts the answer he takes a shot!</li>
+      <li>You must guess if the quote is a real Trump quote or a fake before the timer ends!</li>
+      <li>If you run out of time, TAKE A SHOT!</li>
+      <li>If you get the answer wrong, TAKE A SHOT!</li>
+      <li>NO PHONES! If a player touches his phone he TAKES A SHOT!</li>
+      <li>NO HELPING, if a player blurts the answer he TAKES A SHOT!</li>
       <li>
-        Once you click ok to dismiss the alert GET READY! The timer will start
+        Once you click ok to dismiss the alert GET READY! The 15 seconds timer will start
       </li>
       <li>Winner will not be impeached</li>
       <li>Have fun!</li>

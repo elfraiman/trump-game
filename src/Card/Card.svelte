@@ -4,7 +4,7 @@
   import { fade, fly } from "svelte/transition";
 
   let globfakeOrReal = false;
-  let generatedTweet = "";
+  let generatedTweet = "Get READY!";
   let cardAnimation = false;
   let gameOver = false;
   let intervalTrigger;
@@ -148,39 +148,33 @@
     audio.play();
   }
 
+  function actions(boolean) {
+    playAudio(boolean);
+    handleScore(boolean);
+    startTimer();
+    generateTweet();
+    animateCard();
+  }
+
   function handleAnswer(answer, timerEnded) {
-    if (answer && globfakeOrReal && !timerEnded) {
-      playAudio(true);
-      handleScore(true);
-      startTimer();
+    if (
+      (answer && globfakeOrReal && !timerEnded) ||
+      (!answer && !globfakeOrReal && !timerEnded)
+    ) {
+      actions(true);
       alert("Correct");
-      generateTweet();
-      animateCard();
-    } else if (!answer && !globfakeOrReal && !timerEnded) {
-      playAudio(true);
-      handleScore(true);
-      startTimer();
-      alert("Correct");
-      animateCard();
-      generateTweet();
     } else if (timerEnded) {
-      playAudio(false);
-      handleScore(false);
-      startTimer();
-      alert("Timer ran out! Down it!");
-      generateTweet();
-      animateCard();
+      actions(false);
+      alert("Timer ran out! Take a shot!");
     } else {
-      playAudio(false);
-      handleScore(false);
-      startTimer();
-      alert("Down it!");
-      generateTweet();
-      animateCard();
+      actions(false);
+      alert("Take a shot!");
     }
   }
 
   function startTimer() {
+    let sound = new Audio("audio/error-sound.mp3");
+
     console.log("start timer");
     if (intervalTrigger) {
       clearInterval(intervalTrigger);
@@ -191,12 +185,12 @@
     intervalTrigger = setInterval(() => {
       // Sound effect
       if (timer < 5 && timer > 1) {
-        const sound = new Audio("audio/error-sound.mp3");
+        sound = new Audio("audio/error-sound.mp3");
         sound.play();
       }
 
       if (timer === 1) {
-        const sound = new Audio("audio/bell.mp3");
+        sound = new Audio("audio/bell.mp3");
         sound.play();
       }
 
@@ -247,9 +241,12 @@
   }
 
   onMount(() => {
-    generateTweet();
-    startTimer();
-    gameOver = false;
+    setTimeout(() => {
+      alert("Ready?");
+      generateTweet();
+      startTimer();
+      gameOver = false;
+    }, 500);
   });
 </script>
 
