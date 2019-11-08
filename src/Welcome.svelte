@@ -4,7 +4,7 @@
   import Donate from './Donate/DonateButton.svelte';
 
   export let numberOfPlayers = 1;
-  let renderGame = true;
+  let renderGame = false;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let intro = true;
   export let arrayOfPlayers = [{ id: 1, name: "", score: 0 }];
