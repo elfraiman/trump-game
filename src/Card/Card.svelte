@@ -114,22 +114,25 @@
     if (realTweets.length > 0 && fakeTweets.length > 0) {
       // 1 real 2 fake
       const fakeOrReal = Math.floor(Math.random() * 2) + 1;
+      console.log(fakeOrReal, 'fake or real');
       if (fakeOrReal === 1) {
         // Real
         globfakeOrReal = true;
         const randomIndex = Math.floor(Math.random() * realTweets.length);
         generatedTweet = realTweets[randomIndex];
+        console.log('generate real quote', randomIndex);
         realTweets.splice(randomIndex, 1);
       } else {
         // Fake
         globfakeOrReal = false;
         const randomIndex = Math.floor(Math.random() * fakeTweets.length);
         generatedTweet = fakeTweets[randomIndex];
+        console.log('generate fake quote', randomIndex);
         fakeTweets.splice(randomIndex, 1);
       }
     } else {
       gameOver = true;
-      generateTweet = "";
+      generatedTweet = "";
     }
   }
 
@@ -149,10 +152,10 @@
   }
 
   function actions(boolean) {
+    generateTweet();
     playAudio(boolean);
     handleScore(boolean);
     startTimer();
-    generateTweet();
     animateCard();
   }
 
@@ -176,7 +179,7 @@
     let sound = new Audio("audio/error-sound.mp3");
 
     console.log("start timer");
-    if (intervalTrigger) {
+    if (intervalTrigger || gameOver) {
       clearInterval(intervalTrigger);
     }
 

@@ -101,13 +101,12 @@
   .player-input {
     grid-row: 3/4;
     height: 30px;
-    border: none;
     border-radius: 5px;
     padding: 6px;
     outline: none;
     margin-top: 6px;
     background-color: inherit;
-    border: 2px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.57);
     color: white;
     font-size: 15px;
   }
@@ -125,6 +124,12 @@
 
   select {
     outline: none;
+    border: 2px solid white;
+    color: white;
+    background-color: inherit;
+    font-size: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin-bottom: 6px;
   }
 
   .intro {
@@ -194,6 +199,8 @@
     <h2>Rules</h2>
     <ul>
       <li>You must guess if the quote is a real Trump quote or a fake before the timer ends!</li>
+      <li>You will earn 1 point for a correct answer and -1 point for a wrong answer.</li>
+      <li>If the timer runs out, -1 point and you must TAKE A SHOT!</li>
       <li>If you run out of time, TAKE A SHOT!</li>
       <li>If you get the answer wrong, TAKE A SHOT!</li>
       <li>NO PHONES! If a player touches his phone he TAKES A SHOT!</li>
