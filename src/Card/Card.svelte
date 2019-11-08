@@ -9,7 +9,7 @@
   let cardAnimation = false;
   let gameOver = false;
   let intervalTrigger;
-  let defaultTimeForTimer = 15;
+  let defaultTimeForTimer = 10;
   let timer = defaultTimeForTimer;
   let positiveAudioList = [
     "believe-me.mp3",
@@ -149,21 +149,28 @@
     audio.play();
   }
 
-  function handleAnswer(answer) {
-    if (answer && globfakeOrReal) {
+  function handleAnswer(answer, timerEnded) {
+    if (answer && globfakeOrReal && !timerEnded) {
       playAudio(true);
       handleScore(true);
       startTimer();
       alert("Correct");
       generateTweet();
       animateCard();
-    } else if (!answer && !globfakeOrReal) {
+    } else if (!answer && !globfakeOrReal && !timerEnded) {
       playAudio(true);
       handleScore(true);
       startTimer();
       alert("Correct");
       animateCard();
       generateTweet();
+    } else if (timerEnded) {
+      playAudio(false);
+      handleScore(false);
+      startTimer();
+      alert("Timer ran out! Down it!");
+      generateTweet();
+      animateCard();
     } else {
       playAudio(false);
       handleScore(false);
@@ -179,17 +186,31 @@
     if (intervalTrigger) {
       clearInterval(intervalTrigger);
     }
+
     timer = defaultTimeForTimer;
 
     intervalTrigger = setInterval(() => {
+      // Sound effect
+      if (timer < 5 && timer > 1) {
+        const sound = new Audio("audio/error-sound.mp3");
+        sound.play();
+      }
+
+      if (timer === 1) {
+        const sound = new Audio("audio/bell.mp3");
+        sound.play();
+      }
+
+      // Timer handler
       if (timer > 0) {
         timer--;
       } else {
         clearInterval(intervalTrigger);
         timer = defaultTimeForTimer;
-        interTrigger = null;
-        handleAnswer(false);
-        alert("Time ran out!");
+        intervalTrigger = null;
+
+        // Triggers timer ran out answer
+        handleAnswer(null, true);
       }
     }, 1000);
   }
@@ -228,6 +249,7 @@
 
   onMount(() => {
     generateTweet();
+    startTimer();
     gameOver = false;
   });
 </script>
