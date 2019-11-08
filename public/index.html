@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width" />
 
-    <title>Make shots great again!</title>
+<head>
+  <meta charset="utf8" />
+  <meta name="viewport" content="width=device-width" />
 
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="stylesheet" href="/global.css" />
-    <link rel="stylesheet" href="/bundle.css" />
-  </head>
+  <title>Make shots great again!</title>
 
-  <body>
-    <script src="/bundle.js"></script>
-  </body>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="/global.css" />
+  <link rel="stylesheet" href="/bundle.css" />
+</head>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDknsgqwYJvXvFia0xI_03unRSc8C_JY-M",
+    authDomain: "makeshotsgreatagain.firebaseapp.com",
+    databaseURL: "https://makeshotsgreatagain.firebaseio.com",
+    projectId: "makeshotsgreatagain",
+    storageBucket: "makeshotsgreatagain.appspot.com",
+    messagingSenderId: "606040074445",
+    appId: "1:606040074445:web:914e8b34f2b48c609de184",
+    measurementId: "G-1C19HF38H0"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<body>
+  <script src="/bundle.js"></script>
+</body>
+
 </html>

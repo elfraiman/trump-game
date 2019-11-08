@@ -8,6 +8,9 @@
   let generatedTweet = "";
   let cardAnimation = false;
   let gameOver = false;
+  let intervalTrigger;
+  let defaultTimeForTimer = 15;
+  let timer = defaultTimeForTimer;
   let positiveAudioList = [
     "believe-me.mp3",
     "hillary.mp3",
@@ -150,28 +153,46 @@
     if (answer && globfakeOrReal) {
       playAudio(true);
       handleScore(true);
+      startTimer();
       alert("Correct");
       generateTweet();
       animateCard();
     } else if (!answer && !globfakeOrReal) {
       playAudio(true);
       handleScore(true);
+      startTimer();
       alert("Correct");
       animateCard();
       generateTweet();
     } else {
       playAudio(false);
       handleScore(false);
+      startTimer();
       alert("Down it!");
       generateTweet();
       animateCard();
     }
   }
 
-  onMount(() => {
-    generateTweet();
-    gameOver = false;
-  });
+  function startTimer() {
+    console.log("start timer");
+    if (intervalTrigger) {
+      clearInterval(intervalTrigger);
+    }
+    timer = defaultTimeForTimer;
+
+    intervalTrigger = setInterval(() => {
+      if (timer > 0) {
+        timer--;
+      } else {
+        clearInterval(intervalTrigger);
+        timer = defaultTimeForTimer;
+        interTrigger = null;
+        handleAnswer(false);
+        alert("Time ran out!");
+      }
+    }, 1000);
+  }
 
   function animateCard() {
     cardAnimation = true;
@@ -204,12 +225,17 @@
       playerTurn.update(turn => playerTurnToPlay);
     }
   }
+
+  onMount(() => {
+    generateTweet();
+    gameOver = false;
+  });
 </script>
 
 <style>
   .card-wrapper {
     display: grid;
-    grid-template-rows: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 0.3fr 0.1fr 1fr 0.5fr;
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -218,7 +244,6 @@
     background-color: #d81b60;
     color: white;
     padding: 16px 16px 16px 16px;
-    font-size: 25px;
     text-align: center;
     min-width: 300px;
     min-height: 500px;
@@ -227,7 +252,7 @@
   }
 
   .buttons {
-    grid-row: 3/4;
+    grid-row: 4/5;
     display: flex;
     margin-top: 6px;
     justify-content: space-between;
@@ -258,19 +283,21 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 170px;
+    height: 130px;
   }
   .tweet {
     justify-self: start;
+    font-size: 20px;
+  }
+
+  .timer {
+    margin: 0;
+    font-size: 40px;
   }
 
   @media only screen and (max-width: 600px) {
     .tweet {
-      font-size: 18px;
-    }
-
-    .img-div {
-      height: 120px;
+      font-size: 20px;
     }
 
     button {
@@ -284,6 +311,11 @@
 {#if !cardAnimation && !gameOver}
   <div class="card-wrapper" in:fade out:fly={{ x: -500, duration: 600 }}>
     <div class="img-div" />
+    <h2
+      class="timer"
+      style={timer < 4 ? 'color: #ff5722; font-size: 50px' : 'color: white'}>
+      {timer.toString()}
+    </h2>
     <div class="tweet">"{generatedTweet}"</div>
     <div class="buttons">
       <button on:click={() => handleAnswer(false)}>Fake News</button>
