@@ -10,6 +10,7 @@
   let intervalTrigger;
   let defaultTimeForTimer = 15;
   let timer = defaultTimeForTimer;
+
   let positiveAudioList = [
     "believe-me.mp3",
     "hillary.mp3",
@@ -266,7 +267,7 @@
     border-radius: 15px;
     background-color: #d81b60;
     color: white;
-    padding: 16px 16px 16px 16px;
+    padding: 16px;
     text-align: center;
     min-width: 300px;
     min-height: 500px;
@@ -319,6 +320,10 @@
   }
 
   @media only screen and (max-width: 600px) {
+    .card-wrapper {
+      max-width: 260px;
+    }
+
     .tweet {
       font-size: 20px;
     }
@@ -327,6 +332,7 @@
       font-size: 15px;
       height: 40px;
       padding: 6px;
+      margin: 6px;
     }
   }
 </style>

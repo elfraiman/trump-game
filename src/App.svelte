@@ -19,14 +19,10 @@
 </script>
 
 <style>
-  main {
-    height: 100vh;
+  .wrapper {
     width: 100%;
-    padding: 16px;
-    overflow: hidden;
     text-align: center;
   }
-
   h2 {
     color: white;
     margin-top: 4px;
@@ -56,9 +52,12 @@
     opacity: 0.5;
     margin-top: 16px;
   }
+
+  @media only screen and (max-width: 600px) {
+  }
 </style>
 
-<main>
+<div class="wrapper">
   <h2>Make shots great again!</h2>
   <div class="card-div" in:fly={{ y: 200, duration: 500 }} out:fade>
     <Card />
@@ -79,7 +78,8 @@
     {/if}
   </div>
 
-  <p class="contact-info">BETA VERSION - Contact - elfraiman@gmail.com <Donate /></p>
-</main>
-
-
+  <p class="contact-info">
+    BETA VERSION - Contact - elfraiman@gmail.com
+    <Donate />
+  </p>
+</div>
