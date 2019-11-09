@@ -5,7 +5,7 @@
   import Footer from './Footer/Footer.svelte';
 
   export let numberOfPlayers = 1;
-  let renderGame = false;
+  let renderGame = true;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let intro = true;
 
@@ -62,19 +62,6 @@
     padding: 26px;
   }
 
-  button {
-    width: 150px;
-    height: 50px;
-    color: white;
-    border-radius: 38px;
-    border: 2px solid white;
-    font-size: 16px;
-    padding: 14px;
-    outline: none;
-    background-color: inherit;
-    margin: 16px;
-    font-family: "Trumpfont";
-  }
   button:active {
     box-shadow: none;
     background-color: whitesmoke;
