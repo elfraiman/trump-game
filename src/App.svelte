@@ -3,6 +3,8 @@
   import Donate from "./Donate/DonateButton.svelte";
   import Footer from "./Footer/Footer.svelte";
   import Modal from "./Modal/Modal.svelte";
+  import { navigate } from "svelte-routing";
+  import  isEmpty  from "lodash";
 
   import { playerList, playerTurn } from "./store.js";
   import { onMount } from "svelte";
@@ -286,6 +288,11 @@
   }
 
   onMount(() => {
+    if (arrayOfPlayers === undefined) {
+      console.log('Refresh - no players');
+      navigate("/", { replace: true });
+    }
+
     showGetReadyModal = true;
     setTimeout(() => {
       generateTweet();

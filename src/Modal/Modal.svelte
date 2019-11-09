@@ -54,7 +54,7 @@
   {/if}
   <slot />
   {#if !loginModal}
-    <button on:click={() => dispatch('close')} disabled="!user.loggedIn">
+    <button on:click={() => dispatch('close')}>
       Next
     </button>
   {/if}

@@ -9,14 +9,14 @@
   import Footer from "./Footer/Footer.svelte";
   import PreGame from "./PreGame.svelte";
   import Login from "./Login/Login.svelte";
-  
+  export let url = "";
 </script>
 
 <style>
 
 </style>
 
-<Router>
+<Router url="{url}">
   <Route path="" component={Rules} />
   <Route path="login" component={Login} />
   <Route path="play" component={App} />

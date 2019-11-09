@@ -4,7 +4,7 @@
   import Login from "./Login/Login.svelte";
   import { user } from "./store.js";
 
-  let loginModal = true;
+  let loginModal = false;
 </script>
 
 <style>
