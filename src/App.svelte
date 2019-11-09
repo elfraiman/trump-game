@@ -284,8 +284,8 @@
   }
 
   onMount(() => {
+    showGetReadyModal = true;
     setTimeout(() => {
-      showGetReadyModal = true;
       generateTweet();
       startTimer();
       gameOver = false;
@@ -336,7 +336,7 @@
   <Modal
     imgSrc={'images/trump_wall.png'}
     on:close={() => (showGetReadyModal = false)}>
-    <p>Dismiss to start! Timer will begin, good luck!</p>
+    <p style="color: red">Don't forget to turn on your sound!</p>
   </Modal>
 {/if}
 
@@ -365,21 +365,22 @@
         cardTweet={generatedTweet}
         cardHandleAnswer={handleAnswer} />
     </div>
-  {/if}
-  <div class="player-info" in:fly={{ y: 200, duration: 500 }} out:fade>
-    {#if arrayOfPlayers}
-      {#each arrayOfPlayers as player}
-        <span
-          class="player"
-          style={player.id === playerTurnToPlay ? 'color: white' : 'color: #79d5ff'}>
-          {player.name.toUpperCase()}:
-          <span style={player.score < 0 ? 'color: #d50000' : 'color: #64dd17'}>
-            {player.score}
-          </span>
-        </span>
-      {/each}
-    {/if}
-  </div>
 
+    <div class="player-info" in:fly={{ y: 200, duration: 500 }} out:fade>
+      {#if arrayOfPlayers}
+        {#each arrayOfPlayers as player}
+          <span
+            class="player"
+            style={player.id === playerTurnToPlay ? 'color: white' : 'color: #79d5ff'}>
+            {player.name.toUpperCase()}:
+            <span
+              style={player.score < 0 ? 'color: #d50000' : 'color: #64dd17'}>
+              {player.score}
+            </span>
+          </span>
+        {/each}
+      {/if}
+    </div>
+  {/if}
   <Footer />
 </div>

@@ -1,11 +1,11 @@
 <script>
   import { playerList } from "./store.js";
   import App from "./App.svelte";
-  import Donate from './Donate/DonateButton.svelte';
-  import Footer from './Footer/Footer.svelte';
+  import Donate from "./Donate/DonateButton.svelte";
+  import Footer from "./Footer/Footer.svelte";
 
   export let numberOfPlayers = 1;
-  let renderGame = true;
+  let renderGame = false;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let intro = true;
 
@@ -16,11 +16,9 @@
     if (arrayOfPlayers.length === 1) {
       playerList.set(arrayOfPlayers);
     }
-    alert("Turn your sound on for extra trump goodness!");
   }
 
   function createPlayers() {
-    console.log("change");
     // Resets array of players to an empty array
     if (arrayOfPlayers.length > 0) {
       arrayOfPlayers = [];
@@ -67,13 +65,6 @@
     background-color: whitesmoke;
   }
 
-  select {
-    height: 50px;
-    border: none;
-    border-radius: 5;
-    width: 100%;
-    font-size: 15px;
-  }
 
   .player-inputs {
     display: flex;
@@ -89,7 +80,6 @@
   .player-input {
     grid-row: 3/4;
     height: 30px;
-    border-radius: 5px;
     padding: 6px;
     outline: none;
     margin-top: 6px;
@@ -97,6 +87,7 @@
     border: 2px solid rgba(255, 255, 255, 0.57);
     color: white;
     font-size: 15px;
+    border-radius: 15px;
   }
 
   ::placeholder {
@@ -113,11 +104,14 @@
   select {
     outline: none;
     border: 2px solid white;
-    color: white;
+    color: black;
     background-color: inherit;
     font-size: 15px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-bottom: 6px;
+    border-radius: 15px;
+    width: 100%;
+    height: 40px;
   }
 
   .intro {
@@ -142,6 +136,10 @@
 
     form {
       width: 300px;
+    }
+
+    .intro {
+      font-size: 14px;
     }
   }
 </style>
@@ -179,24 +177,29 @@
   <div class="intro">
     <h2>Rules</h2>
     <ul>
-      <li>You must guess if the quote is a real Trump quote or a fake before the timer ends!</li>
-      <li>You will earn 1 point for a correct answer and -1 point for a wrong answer.</li>
+      <li>
+        You must guess if the quote is a real Trump quote or a fake before the
+        timer ends!
+      </li>
+      <li>
+        You will earn 1 point for a correct answer and -1 point for a wrong
+        answer.
+      </li>
       <li>If the timer runs out, -1 point and you must TAKE A SHOT!</li>
       <li>If you run out of time, TAKE A SHOT!</li>
       <li>If you get the answer wrong, TAKE A SHOT!</li>
       <li>NO PHONES! If a player touches his phone he TAKES A SHOT!</li>
       <li>NO HELPING, if a player blurts the answer he TAKES A SHOT!</li>
       <li>
-        Once you click ok to dismiss the alert GET READY! The 15 seconds timer will start
+        Once you click ok to dismiss the alert GET READY! The 15 seconds timer
+        will start
       </li>
       <li>Winner will not be impeached</li>
       <li>Have fun!</li>
     </ul>
 
     <button on:click={() => passIntro(true)}>Play</button>
-    <p style="color: #ffff00">
-      BETA VERSION 1.0
-    </p>
+    <p style="color: #ffff00">BETA VERSION 1.0</p>
     <Footer />
   </div>
 {/if}
