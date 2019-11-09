@@ -99,7 +99,9 @@
     "I like kids. I mean, I won’t do anything to take care of them. I’ll supply funds, and she’ll take care of the kids.",
     "I will be the greatest jobs president that God ever created.",
     "I don't think I'm going to lose, but if I do, I don't think you're ever going to see me again, folks. I think I'll go to Turnberry and play golf or something.",
-    "I don’t think I’ve made mistakes. Every time somebody said I made a mistake, they do the polls and my numbers go up, so I guess I haven't made any mistakes."
+    "I don’t think I’ve made mistakes. Every time somebody said I made a mistake, they do the polls and my numbers go up, so I guess I haven't made any mistakes.",
+    "Well I, I loved my previous life, I had so many things going. I, I, I actually, this is more work than my previous life. I thought it would be easier.",
+    "I've never seen anyone thin drink Diet Coke"
   ];
 
   export let fakeTweets = [
