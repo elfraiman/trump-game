@@ -15,7 +15,7 @@
       playerList.set(arrayOfPlayers);
     }
 
-    navigate("play", {replace: true});
+    navigate("play", { replace: true });
   }
 
   function createPlayers() {
@@ -38,6 +38,10 @@
     });
 
     playerList.set(arrayOfPlayers);
+  }
+
+  function navigateTo(route) {
+    navigate(route, { replace: true });
   }
 </script>
 
@@ -144,8 +148,6 @@
 
     <button type="submit">Play</button>
 
-    <button>
-      <Link to="rules">Rules</Link>
-    </button>
+    <button on:click={() => navigateTo('rules')}>Rules</button>
   </form>
 </div>

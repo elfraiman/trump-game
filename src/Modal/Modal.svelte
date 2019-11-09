@@ -16,7 +16,6 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
   }
-
   .modal {
     position: absolute;
     display: flex;
@@ -34,11 +33,9 @@
     border-radius: 15px;
     background: white;
   }
-
   img {
     width: 150px;
   }
-
   button {
     border: 2px solid black;
     color: black;
@@ -58,5 +55,4 @@
       Next
     </button>
   {/if}
-
 </div>

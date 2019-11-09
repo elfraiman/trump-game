@@ -1,5 +1,5 @@
 <script>
-  import { Link } from "svelte-routing";
+  import { Link, navigate } from "svelte-routing";
   import Modal from "./Modal/Modal.svelte";
   import Login from "./Login/Login.svelte";
   import { user } from "./store.js";
@@ -56,9 +56,8 @@
       <li>Have fun!</li>
     </ul>
 
-    <button>
-      <Link to="start-game">Start</Link>
-    </button>
+    <button on:click={() => navigate('start-game', { replace: true })}>Start</button>
+    
     <p style="color: #ffff00">BETA VERSION 1.0</p>
   </div>
 {/if}

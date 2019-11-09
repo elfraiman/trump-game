@@ -4,7 +4,6 @@
   import Footer from "./Footer/Footer.svelte";
   import Modal from "./Modal/Modal.svelte";
   import { navigate } from "svelte-routing";
-  import  isEmpty  from "lodash";
 
   import { playerList, playerTurn } from "./store.js";
   import { onMount } from "svelte";
@@ -47,6 +46,7 @@
     "wonderful.mp3",
     "mill.mp3"
   ];
+  
   let negativeAudioList = [
     "wrong.mp3",
     "what.mp3",
