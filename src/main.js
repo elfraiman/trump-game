@@ -1,9 +1,9 @@
-import Welcome from './Welcome.svelte';
+import Router from './Router.svelte';
 import LogRocket from 'logrocket';
 // Initialize logRocket
-// LogRocket.init('q9gyyz/make-shots-great-again');
+LogRocket.init('q9gyyz/make-shots-great-again');
 
-const app = new Welcome({
+const app = new Router({
 	target: document.body
 });
 

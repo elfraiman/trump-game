@@ -12,9 +12,12 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "firebase": "^7.3.0",
+    "lodash": "^4.17.15",
     "logrocket": "^1.0.3",
     "mongodb": "^3.3.3",
-    "sirv-cli": "^0.4.4"
+    "sirv-cli": "^0.4.4",
+    "svelte-routing": "^1.4.0"
   },
   "scripts": {
     "build": "rollup -c",
