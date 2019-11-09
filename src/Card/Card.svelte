@@ -21,14 +21,15 @@
     min-height: 400px;
     height: 500px;
     max-width: 500px;
-    max-height: 500px;
+    max-height: 100%;
     padding: 6px;
+    contain: content;
   }
 
   .buttons {
     grid-row: 4/5;
     display: flex;
-    margin-top: 6px;
+    margin: 6px 0px 6px 0px;
     justify-content: space-between;
     align-self: end;
     width: 100%;
@@ -61,7 +62,6 @@
     .card-wrapper {
         max-width: 90%;
         min-height: 500px;
-        max-height: 500px;
     }
 
     .tweet {
@@ -80,7 +80,6 @@
     .card-wrapper {
       max-width: 90%;
       min-height: 400px;
-      max-height: 400px;
     }
 
     .tweet {
