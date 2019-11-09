@@ -2,6 +2,7 @@
   import { playerList } from "./store.js";
   import App from "./App.svelte";
   import Donate from './Donate/DonateButton.svelte';
+  import Footer from './Footer/Footer.svelte';
 
   export let numberOfPlayers = 1;
   let renderGame = false;
@@ -147,13 +148,6 @@
     color: white;
   }
 
-  .contact-info {
-    font-size: 14px;
-    color: white;
-    position: absolute;
-    bottom: 2px;
-  }
-
   @media only screen and (max-width: 600px) {
     img {
       width: 300px;
@@ -216,6 +210,6 @@
     <p style="color: #ffff00">
       BETA VERSION 1.0
     </p>
-    <p class="contact-info">Contact & Information - elfraiman@gmail.com <Donate /> </p>
+    <Footer />
   </div>
 {/if}
