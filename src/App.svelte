@@ -127,7 +127,27 @@
     "I can't be impeached, Obama was not impeached and I'm doing twice the job he did. I'm doing incredible, far too good to be impeached",
     "No president has ever been treated as badly as I have been treated. Some were shot yes, but what happens to me is worse, much worse.",
     "I'm a very good businessman, not because my numbers are good, they are tremendous numbers, you wouldn't believe, but my business is what makes me a good businessman.",
-    "I'm one of the best in branding, probably the best out there, I have done great branding for America, the same as I did for the Trump brand, gave it some class a lot of class."
+    "I'm one of the best in branding, probably the best out there, I have done great branding for America, the same as I did for the Trump brand, gave it some class a lot of class.",
+    "Our relationship with North Korea was nothing. Then I came, and was diplomatic, you know, using diplomacy. They had never seen that before. That’s why our relationship is so much better now, the best even.",
+    "These late night hosts talk about me all the time, The Colbert show and Jon Daily, they all need me. Without me they would be on the street. They should vote for me, I saved their jobs.",
+    "They say my children had it easy. That’s not true, they’re my kids. Imagine having to live up to that? That’s a lot of pressure, to follow someone so successful.",
+    "Kids these days, so nasty. Used be a lot better. They have a lot of hate in them now. They say things like ‘Oke Boomer’. No respect at all. In my day we didn’t do that.",
+    "This whole thing because of some whistle blower, can you believe it? I don’t. I’m blowing the whistle on the whistle blower. And I blow a lot better.",
+    "I don’t need anyone’s help to beat Sleepy Joe. And if I did, I would not ask Ukraine, I’ve got a lot better options, great options.",
+    "It’s important I golf a lot. I’m a very good golfer, really one of the best I think. And if you want to as good as me, you’ve have to keep playing, you have to",
+    "As you know, my inauguration was a huge event, absolutely huge. When I win again the crowd will probably be even bigger. A crowd so big, Obama would never even dream of getting on that big.",
+    "Kim Jong-un’s father was actually also called Kim, not a lot of people know that. And his dad was a Kim too, they’re all Kims.",
+    "That congresswoman from Illinois is a seven tops, if she was a republican maybe an eight.",
+    "Someone told me you can't say junk or pussy anymore these day, because of the political correctness of the left. We need to say their 'private parts'. Can you believe that? What's the world coming to",
+    "Nobody’s smarter than me. If I didn’t go into real estate but into science, I would have been bigger than Einstein.",
+    "If I was a scientist, I would run circles around even Steven Hawking, and not because he’s in a wheelchair.",
+    "Folks, I’ve got an announcement. I had the best people working on a secret project for a long time. The very best. We’re building some great technology, the greatest tech even. But that’s classified.",
+    "It’s clearly a budget. It’s got lots of numbers in it.",
+    "You know, if I were a single man, I might ask that mummy out. That's a good-looking mummy",
+    "The vast majority of our imports come from outside the country.",
+    "I would never pay for sex, I have the money to do it but don’t need to. I would even say people would pay to sleep with me, I think they would. They really want to be with me.",
+    "I feel bad for Robert Mueller. He’s doing a lot a work for nothing. Poor guy, being sent on the world’s largest witch hunt can’t be fun.",
+    "Crazy Bernie has no idea what he’s talking about. If he becomes president, he’ll be begging for my help. I make running the economy look easy, no socialist can do it this well."
   ];
 
   playerTurn.subscribe(turn => (playerTurnToPlay = turn));
