@@ -1,6 +1,7 @@
 <script>
   import { playerList } from "./store.js";
   import { Link, navigate } from "svelte-routing";
+  import Footer from './Footer/Footer.svelte';
 
   export let numberOfPlayers = 1;
   let renderGame = false;
@@ -151,3 +152,4 @@
     <button on:click={() => navigateTo('rules')}>Rules</button>
   </form>
 </div>
+<Footer />

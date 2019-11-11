@@ -3,7 +3,7 @@
   import Modal from "./Modal/Modal.svelte";
   import Login from "./Login/Login.svelte";
   import { user } from "./store.js";
-
+  import Footer from './Footer/Footer.svelte';
   let loginModal = false;
 </script>
 
@@ -60,4 +60,5 @@
     
     <p style="color: #ffff00">BETA VERSION 1.0</p>
   </div>
+  <Footer />
 {/if}

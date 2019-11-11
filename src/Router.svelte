@@ -21,5 +21,4 @@
   <Route path="play" component={App} />
   <Route path="start-game" component={PreGame} />
   <Route path="rules" component={Rules} />
-  <Footer />
 </Router>
