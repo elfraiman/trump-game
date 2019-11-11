@@ -391,5 +391,4 @@
       {/if}
     </div>
   {/if}
-  <Footer />
 </div>

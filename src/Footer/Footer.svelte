@@ -4,7 +4,7 @@
 
 <style>
   .footer {
-    position: absolute;
+    position: relative;
     bottom: 6px;
     text-align: center;
     justify-self: center;
