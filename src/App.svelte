@@ -33,6 +33,7 @@
   let showPositiveModal = false;
   let showNegativeModal = false;
   let showGetReadyModal = false;
+  let showGameOverModal = false;
 
   let positiveAudioList = [
     "believe-me.mp3",
@@ -176,6 +177,7 @@
       }
     } else {
       gameOver = true;
+      showGameOverModal = true;
       generatedTweet = "";
     }
   }
@@ -382,6 +384,16 @@
     imgSrc={'images/trump_sad.png'}
     on:close={() => (showNegativeModal = false)}>
     <p>Take a shot!</p>
+  </Modal>
+{/if}
+
+{#if showGameOverModal}
+    <Modal
+    imgSrc={'images/trump_wall.png'}
+    on:close={() => (showNegativeModal = false)}>
+    <p>Game over!</p>
+    <p>If you enjoyed the game and want to buy me a cup of coffee, that'd be tremendous, very great.</p>
+    <p><Donate /></p>
   </Modal>
 {/if}
 
