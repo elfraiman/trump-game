@@ -1,11 +1,20 @@
 <script>
-  import { playerList } from "./store.js";
+  import { playerList, firstToScore } from "./store.js";
   import { Link, navigate } from "svelte-routing";
-  import Footer from './Footer/Footer.svelte';
+  import Footer from "./Footer/Footer.svelte";
 
   export let numberOfPlayers = 1;
   let renderGame = false;
   let players = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  let gameModes = [
+    "First to 5",
+    "First to 10",
+    "First to 15",
+    "All the quotes"
+  ];
+
+  let gameMode = "";
+
   let intro = true;
 
   export let arrayOfPlayers = [{ id: 1, name: "", score: 0 }];
@@ -39,6 +48,18 @@
     });
 
     playerList.set(arrayOfPlayers);
+  }
+
+  function createGameMode() {
+    if (gameMode === "First to 5") {
+      firstToScore.set(5);
+    } else if (gameMode === "First to 10") {
+      firstToScore.set(10);
+    } else if (gameMode === "First to 15") {
+      firstToScore.set(15);
+    } else {
+      firstToScore.set(null);
+    }
   }
 
   function navigateTo(route) {
@@ -104,7 +125,7 @@
   select {
     outline: none;
     border: 2px solid white;
-    color: black;
+    color: white;
     background-color: inherit;
     font-size: 15px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -112,6 +133,11 @@
     border-radius: 15px;
     width: 100%;
     height: 40px;
+    padding: 6px;
+  }
+
+  p {
+    color: white;
   }
 
   @media only screen and (max-width: 600px) {
@@ -129,6 +155,13 @@
   <h2>Make shots great again!</h2>
   <img src="images/trump_guns.png" alt="trump" />
   <form on:submit|preventDefault={handleSubmit}>
+    <p>Game Mode</p>
+    <select bind:value={gameMode} on:change={createGameMode}>
+      {#each gameModes as mode}
+        <option value={mode}>{mode}</option>
+      {/each}
+    </select>
+    <p>Players</p>
     <select bind:value={numberOfPlayers} on:change={createPlayers}>
       {#each players as player}
         <option value={player}>{player}</option>

@@ -5,7 +5,7 @@
   import Modal from "./Modal/Modal.svelte";
   import { navigate } from "svelte-routing";
 
-  import { playerList, playerTurn } from "./store.js";
+  import { playerList, playerTurn, firstToScore } from "./store.js";
   import { onMount } from "svelte";
   import { fade, fly } from "svelte/transition";
 
@@ -32,8 +32,12 @@
   // Modal booleans
   let showPositiveModal = false;
   let showNegativeModal = false;
-  let showGetReadyModal = false;
+  let showGetReadyModal = true;
   let showGameOverModal = false;
+  //Game mode score
+  let toScore;
+  //Winner
+  let winner = '';
 
   let positiveAudioList = [
     "believe-me.mp3",
@@ -47,7 +51,7 @@
     "wonderful.mp3",
     "mill.mp3"
   ];
-  
+
   let negativeAudioList = [
     "wrong.mp3",
     "what.mp3",
@@ -151,9 +155,12 @@
     "Crazy Bernie has no idea what he’s talking about. If he becomes president, he’ll be begging for my help. I make running the economy look easy, no socialist can do it this well."
   ];
 
+  // State handlers
   playerTurn.subscribe(turn => (playerTurnToPlay = turn));
   playerList.subscribe(playersState => (players = playersState));
+  firstToScore.subscribe(scoreState => toScore = scoreState);
 
+  // Generates a random tweet from the list, also randomly generates a real or fake one.
   function generateTweet() {
     // While real or fake have items keep playing
     if (realTweets.length > 0 && fakeTweets.length > 0) {
@@ -176,12 +183,11 @@
         fakeTweets.splice(randomIndex, 1);
       }
     } else {
-      gameOver = true;
-      showGameOverModal = true;
-      generatedTweet = "";
+      endGame();
     }
   }
 
+  // In charge of getting a random audio clip to sound
   function playAudio(answer) {
     let audio;
     if (answer) {
@@ -197,6 +203,7 @@
     audio.play();
   }
 
+  // Triggers the actions for a true answer || false
   function actions(boolean) {
     if (!gameOver) {
       generateTweet();
@@ -207,6 +214,7 @@
     }
   }
 
+  // Answer logic
   function handleAnswer(answer, timerEnded) {
     if (
       (answer && globfakeOrReal && !timerEnded) ||
@@ -229,6 +237,7 @@
     }
   }
 
+  // Game timer logic
   function startTimer() {
     let modalTimer;
     // Checkes if any modal is open, if so it resets the time until the modal closes.
@@ -276,6 +285,7 @@
     }
   }
 
+  // Handles the triggering of the animation for the card
   function animateCard() {
     cardAnimation = true;
 
@@ -284,18 +294,26 @@
     }, 900);
   }
 
-  function handleScore(handler) {
+  function handleScore(scoreHandler) {
+    // Safty check for players
     if (players) {
       const player = players.find(val => val.id === playerTurnToPlay);
 
+      // Loops through the players and checkes who's turn it is using the player ID and updates score
       players.find(playerFromList => {
-        if (handler) {
+        if (scoreHandler) {
           playerFromList.id === player.id ? playerFromList.score++ : null;
+
+          // Checkes if the player has a score over the firstToScore game mode
+          if (playerFromList.score >= toScore) {
+            endGame();
+          }
         } else {
           playerFromList.id === player.id ? playerFromList.score-- : null;
         }
       });
 
+      // Changes player turn to indicate whos turn it is
       if (playerTurnToPlay < players.length) {
         playerTurnToPlay++;
       } else {
@@ -309,28 +327,44 @@
     }
   }
 
-  onMount(() => {
-    if (arrayOfPlayers === undefined) {
-      console.log('Refresh - no players');
-      navigate("/", { replace: true });
-    }
+  // Handles ending a game, reseting the tweet and showing the game over modal
+  function endGame() {
+    console.log('Game Over');
+    gameOver = true;
+    showGameOverModal = true;
+    generatedTweet = "";
 
-    showGetReadyModal = true;
-    setTimeout(() => {
-      generateTweet();
-      startTimer();
-      gameOver = false;
-    }, 500);
-  });
+    // Find and set the winner
+    const theWinner = players.find(player => player.score === toScore);
+    winner = theWinner.name;
+  }
+
+  // Starts the game
+  function startGame() {
+    generateTweet();
+    startTimer();
+    gameOver = false;
+  }
 
   export let arrayOfPlayers;
 
+  // Updates state
   playerTurn.subscribe(turn => {
     playerTurnToPlay = turn;
   });
 
   playerList.subscribe(value => {
     arrayOfPlayers = value;
+  });
+
+  onMount(() => {
+    console.log(toScore, 'firstToScore');
+    // A safeguard to make sure the user cannot play without choosing players
+    //
+    if (arrayOfPlayers === undefined) {
+      console.log("Refresh - no players");
+      navigate("/", { replace: true });
+    }
   });
 </script>
 
@@ -363,10 +397,14 @@
   }
 </style>
 
+<!-- Modals -->
 {#if showGetReadyModal}
   <Modal
     imgSrc={'images/trump_wall.png'}
-    on:close={() => (showGetReadyModal = false)}>
+    on:close={() => {
+      showGetReadyModal = false;
+      startGame();
+    }}>
     <p style="color: red">Don't forget to turn on your sound!</p>
   </Modal>
 {/if}
@@ -388,15 +426,25 @@
 {/if}
 
 {#if showGameOverModal}
-    <Modal
+  <Modal
     imgSrc={'images/trump_wall.png'}
-    on:close={() => (showNegativeModal = false)}>
+    on:close={() => {
+      showNegativeModal = false;
+      navigate("/", { replace: true });
+    }}>
     <p>Game over!</p>
-    <p>If you enjoyed the game and want to buy me a cup of coffee, that'd be tremendous, very great.</p>
-    <p><Donate /></p>
+    <p style="color: green">Winner is {winner}</p>
+    <p>
+      If you enjoyed the game and want to buy me a cup of coffee, that'd be
+      tremendous, very great.
+    </p>
+    <p>
+      <Donate />
+    </p>
   </Modal>
 {/if}
 
+<!-- Main game window -->
 <div class="wrapper">
   <h2>Make shots great again!</h2>
   {#if !cardAnimation && !gameOver && !showNegativeModal && !showPositiveModal && !showGetReadyModal}
@@ -407,6 +455,7 @@
         cardHandleAnswer={handleAnswer} />
     </div>
 
+    <!-- Player Scores -->
     <div class="player-info" in:fly={{ y: 200, duration: 500 }} out:fade>
       {#if arrayOfPlayers}
         {#each arrayOfPlayers as player}
