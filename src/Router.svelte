@@ -13,7 +13,6 @@
 </script>
 
 <style>
-
 </style>
 
 <Router url="{url}">

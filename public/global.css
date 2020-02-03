@@ -10,12 +10,19 @@ a {
   text-decoration: none;
 }
 
+h2, h3 {
+  color: #161616;
+  font-family: 'Trumpfont';
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #00b0ff;
-  font-family: 'Trumpfont', 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
-  'Arial', sans-serif;
+  font-family: 'Helvetica', 'Roboto', 'Arial';
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  background-color: #80d8ff;
 }
 
 main {
@@ -27,7 +34,7 @@ main {
 button { 
   width: 150px;
   height: 50px;
-  color: white;
+  color: #161616;
   border-radius: 38px;
   border: 2px solid white;
   font-size: 16px;
@@ -35,6 +42,6 @@ button {
   outline: none;
   background-color: inherit;
   margin: 16px;
-  font-family: "Trumpfont";
+  font-weight: 600;
 }
 

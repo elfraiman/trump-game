@@ -35,6 +35,10 @@
     width: 100%;
   }
 
+  button {
+    color: white !important;
+  }
+
   button:active {
     border-color: greenyellow;
     color: greenyellow;
@@ -61,8 +65,8 @@
 
   @media only screen and (max-width: 600px) {
     .card-wrapper {
-        max-width: 90%;
-        min-height: 500px;
+      max-width: 90%;
+      min-height: 500px;
     }
 
     .tweet {
@@ -77,7 +81,7 @@
     }
   }
 
-    @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: 360px) {
     .card-wrapper {
       max-width: 90%;
       min-height: 400px;

@@ -25,8 +25,6 @@
   let timer = defaultTimeForTimer;
   // Current local player turn, this goes to state
   let playerTurnToPlay = 1;
-  // local players
-  let players;
   // General stop timer for dev
   let stopTimer = false;
   // Modal booleans
@@ -37,7 +35,7 @@
   //Game mode score
   let toScore;
   //Winner
-  let winner = '';
+  let winner = "";
 
   let positiveAudioList = [
     "believe-me.mp3",
@@ -154,8 +152,6 @@
     "I feel bad for Robert Mueller. He’s doing a lot a work for nothing. Poor guy, being sent on the world’s largest witch hunt can’t be fun.",
     "Crazy Bernie has no idea what he’s talking about. If he becomes president, he’ll be begging for my help. I make running the economy look easy, no socialist can do it this well."
   ];
-
-
 
   // Generates a random tweet from the list, also randomly generates a real or fake one.
   function generateTweet() {
@@ -290,12 +286,13 @@
 
   // Handles the score
   function handleScore(scoreHandler) {
-    // Safty check for players
-    if (players) {
-      const player = players.find(val => val.id === playerTurnToPlay);
+    console.log("handle score", scoreHandler, "playersList", arrayOfPlayers);
+    // Safty check for arrayOfPlayers
+    if (arrayOfPlayers) {
+      const player = arrayOfPlayers.find(val => val.id === playerTurnToPlay);
 
-      // Loops through the players and checkes who's turn it is using the player ID and updates score
-      players.find(playerFromList => {
+      // Loops through the arrayOfPlayers and checkes who's turn it is using the player ID and updates score
+      arrayOfPlayers.find(playerFromList => {
         if (scoreHandler) {
           playerFromList.id === player.id ? playerFromList.score++ : null;
 
@@ -309,7 +306,7 @@
       });
 
       // Changes player turn to indicate whos turn it is
-      if (playerTurnToPlay < players.length) {
+      if (playerTurnToPlay < arrayOfPlayers.length) {
         playerTurnToPlay++;
       } else {
         playerTurnToPlay = 1;
@@ -317,21 +314,20 @@
 
       // Since values are bond to each other in svelte all you need to do is update the store with itself
       //
-      playerList.update(store => players);
-      playerTurn.update(turn => playerTurnToPlay);
+      playerTurn.update(() => playerTurnToPlay);
     }
   }
 
   // Handles ending a game, reseting the tweet and showing the game over modal
   // and finding the winner.
   function endGame() {
-    console.log('Game Over');
+    console.log("Game Over");
     gameOver = true;
     showGameOverModal = true;
     generatedTweet = "";
 
     // Find and set the winner
-    const theWinner = players.find(player => player.score === toScore);
+    const theWinner = playersList.find(player => player.score === toScore);
     winner = theWinner.name;
   }
 
@@ -348,20 +344,22 @@
   playerTurn.subscribe(turn => {
     playerTurnToPlay = turn;
   });
+
   playerList.subscribe(value => {
     arrayOfPlayers = value;
   });
-  firstToScore.subscribe(scoreState => toScore = scoreState);
+
+  firstToScore.subscribe(scoreState => (toScore = scoreState));
 
   // Mount lifecycle, I'm using this here as a sort of router guard.
-  // If there's no players selected meaning the user deep linked
+  // If there's no playersList selected meaning the user deep linked
   // we kick back to the start.
   //
   onMount(() => {
-    // A safeguard to make sure the user cannot play without choosing players
+    // A safeguard to make sure the user cannot play without choosing playersList
     //
     if (arrayOfPlayers === undefined) {
-      console.log("Refresh - no players");
+      console.log("Refresh - no playersList");
       navigate("/", { replace: true });
     }
   });
@@ -371,10 +369,10 @@
   .wrapper {
     width: 100%;
     text-align: center;
+    margin-bottom: 26px;
   }
   h2 {
-    color: white;
-    margin-top: 4px;
+    margin-top: 16px;
   }
   .card-div {
     display: flex;
@@ -383,16 +381,24 @@
   .player-info {
     text-align: center;
     align-self: start;
-    margin-top: 4px;
+    margin-top: 16px;
   }
   .player {
     margin: 6px;
     font-size: 20px;
-    color: white;
+    color: #161616;
     font-weight: 700;
   }
 
+  img {
+    max-width: 800px;
+    margin-bottom: -30px;
+  }
+
   @media only screen and (max-width: 600px) {
+    img {
+      width: 200px;
+    }
   }
 </style>
 
@@ -429,7 +435,7 @@
     imgSrc={'images/trump_wall.png'}
     on:close={() => {
       showNegativeModal = false;
-      navigate("/", { replace: true });
+      navigate('/', { replace: true });
     }}>
     <p>Game over!</p>
     <p style="color: green">Winner is {winner}</p>
@@ -447,6 +453,11 @@
 <div class="wrapper">
   <h2>Make shots great again!</h2>
   {#if !cardAnimation && !gameOver && !showNegativeModal && !showPositiveModal && !showGetReadyModal}
+    <img
+      src="images/trump_kiss.png"
+      alt="trump doing kiss smoochie"
+      in:fade
+      out:fly={{ x: -500, duration: 500 }} />
     <div class="card-div" in:fade out:fly={{ x: -500, duration: 500 }}>
       <Card
         cardTimer={timer}
@@ -460,7 +471,7 @@
         {#each arrayOfPlayers as player}
           <span
             class="player"
-            style={player.id === playerTurnToPlay ? 'color: white' : 'color: #79d5ff'}>
+            style={player.id === playerTurnToPlay ? 'color: #161616' : 'color: #bdbdbd'}>
             {player.name.toUpperCase()}:
             <span
               style={player.score < 0 ? 'color: #d50000' : 'color: #64dd17'}>

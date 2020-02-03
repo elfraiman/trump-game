@@ -12,8 +12,7 @@
     display: flex;
   }
   .contact-info {
-    font-size: 10px;
-    color: white;
+    font-size: 14px;
     width: 100%;
   }
 </style>

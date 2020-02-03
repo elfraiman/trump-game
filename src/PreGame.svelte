@@ -21,6 +21,7 @@
 
   function handleSubmit() {
     renderGame = true;
+    console.log(arrayOfPlayers, "arrayOfPlayers preGame");
     if (arrayOfPlayers.length === 1) {
       playerList.set(arrayOfPlayers);
     }
@@ -68,18 +69,38 @@
 </script>
 
 <style>
-  h2 {
-    color: white;
-  }
   .welcome-wrapper {
     display: grid;
     justify-self: center;
     justify-content: center;
     text-align: center;
+    padding: 16px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80vw;
+    height: 100%;
+    padding: 16px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    font-size: 18px;
+    margin-top: 16px;
   }
 
   img {
-    padding: 26px;
+    justify-self: center;
+    max-width: 800px;
+    margin-bottom: -80px;
+    margin-right: -20px;
   }
 
   button:active {
@@ -105,27 +126,25 @@
     outline: none;
     margin-top: 6px;
     background-color: inherit;
-    border: 2px solid rgba(255, 255, 255, 0.57);
-    color: white;
+    border: none;
+    border-bottom: 1px solid #161616;
     font-size: 15px;
-    border-radius: 15px;
   }
 
   ::placeholder {
-    color: white;
+    color: #161616;
   }
   ::-webkit-input-placeholder {
-    color: white;
+    color: #161616;
   }
 
   :-ms-input-placeholder {
-    color: white;
+    color: #161616;
   }
 
   select {
     outline: none;
-    border: 2px solid white;
-    color: white;
+    border: 2px solid black;
     background-color: inherit;
     font-size: 15px;
     margin-bottom: 6px;
@@ -135,8 +154,11 @@
     padding: 6px;
   }
 
-  p {
-    color: white;
+  .buttons {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    justify-content: space-between;
   }
 
   @media only screen and (max-width: 600px) {
@@ -151,38 +173,46 @@
 </style>
 
 <div class="welcome-wrapper">
-  <h2>Make shots great again!</h2>
-  <img src="images/trump_guns.png" alt="trump" />
-  <form on:submit|preventDefault={handleSubmit}>
-    <p>Game Mode</p>
-    <select bind:value={gameMode} on:change={createGameMode}>
-      {#each gameModes as mode}
-        <option value={mode}>{mode}</option>
-      {/each}
-    </select>
-    <p>Players</p>
-    <select bind:value={numberOfPlayers} on:change={createPlayers}>
-      {#each players as player}
-        <option value={player}>{player}</option>
-      {/each}
-    </select>
-
-    {#if numberOfPlayers}
-      <div class="player-inputs">
-        {#each arrayOfPlayers as player (player.id)}
-          <input
-            required
-            class="player-input"
-            placeholder="Player {player.id} name"
-            bind:value={player.name} />
+  <img src="images/trump_openhands.png" alt="trump" />
+  <div class="card">
+    <form on:submit|preventDefault={handleSubmit}>
+      <p>Game Mode</p>
+      <select bind:value={gameMode} on:change={createGameMode}>
+        {#each gameModes as mode}
+          <option value={mode}>{mode}</option>
         {/each}
+      </select>
+      <p>Players</p>
+      <select bind:value={numberOfPlayers} on:change={createPlayers}>
+        {#each players as player}
+          <option value={player}>{player}</option>
+        {/each}
+      </select>
+
+      {#if numberOfPlayers}
+        <div class="player-inputs">
+          {#each arrayOfPlayers as player (player.id)}
+            <input
+              required
+              class="player-input"
+              placeholder="Player {player.id} name"
+              bind:value={player.name} />
+          {/each}
+        </div>
+      {/if}
+      <div class="buttons">
+        <button on:click={() => handleSubmit()} style="border-color: #64d956">
+          Play
+        </button>
+
+        <button
+          style="border-color: #161616"
+          on:click={() => navigateTo('rules')}>
+          Rules
+        </button>
       </div>
-    {/if}
-
-    <button type="submit" style="border-color: #64d956">Play</button>
-
-    <button on:click={() => navigateTo('rules')}>Rules</button>
-  </form>
+    </form>
+  </div>
 </div>
 
 <Footer />
