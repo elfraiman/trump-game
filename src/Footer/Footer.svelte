@@ -20,7 +20,7 @@
 
 <div class="footer">
   <p class="contact-info">
-    Contact & Information - elfraiman@gmail.com
+    Built by Elan Fraiman & Robert Haijje
     <Donate />
   </p>
 </div>

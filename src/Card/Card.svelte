@@ -47,6 +47,7 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 130px;
+    margin-top: 10px;
   }
   .tweet {
     justify-self: start;

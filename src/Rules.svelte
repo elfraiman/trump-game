@@ -8,7 +8,7 @@
 </script>
 
 <style>
-  h2 {
+  h2, h3 {
     color: white;
   }
   .intro {
@@ -33,6 +33,7 @@
   </Modal>
 {:else}
   <div class="intro">
+    <h3>A drinking game based on President Trump's crazy quotes.</h3>
     <h2>Rules</h2>
     <ul>
       <li>

@@ -1,8 +1,8 @@
 <script>
   import { createEventDispatcher } from "svelte";
   import { user } from "../store.js";
-	export let imgSrc;
-	export let loginModal = false;
+  export let imgSrc;
+  export let loginModal = false;
 
   const dispatch = createEventDispatcher();
 </script>
@@ -51,8 +51,6 @@
   {/if}
   <slot />
   {#if !loginModal}
-    <button on:click={() => dispatch('close')}>
-      Next
-    </button>
+    <button on:click={() => dispatch('close')}>Next</button>
   {/if}
 </div>

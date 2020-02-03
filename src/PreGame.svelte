@@ -128,7 +128,6 @@
     color: white;
     background-color: inherit;
     font-size: 15px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     margin-bottom: 6px;
     border-radius: 15px;
     width: 100%;
@@ -180,9 +179,10 @@
       </div>
     {/if}
 
-    <button type="submit">Play</button>
+    <button type="submit" style="border-color: #64d956">Play</button>
 
     <button on:click={() => navigateTo('rules')}>Rules</button>
   </form>
 </div>
+
 <Footer />

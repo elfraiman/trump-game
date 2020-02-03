@@ -155,10 +155,7 @@
     "Crazy Bernie has no idea what he’s talking about. If he becomes president, he’ll be begging for my help. I make running the economy look easy, no socialist can do it this well."
   ];
 
-  // State handlers
-  playerTurn.subscribe(turn => (playerTurnToPlay = turn));
-  playerList.subscribe(playersState => (players = playersState));
-  firstToScore.subscribe(scoreState => toScore = scoreState);
+
 
   // Generates a random tweet from the list, also randomly generates a real or fake one.
   function generateTweet() {
@@ -291,6 +288,7 @@
     }, 900);
   }
 
+  // Handles the score
   function handleScore(scoreHandler) {
     // Safty check for players
     if (players) {
@@ -325,6 +323,7 @@
   }
 
   // Handles ending a game, reseting the tweet and showing the game over modal
+  // and finding the winner.
   function endGame() {
     console.log('Game Over');
     gameOver = true;
@@ -336,7 +335,7 @@
     winner = theWinner.name;
   }
 
-  // Starts the game
+  // Starts the game, duh..
   function startGame() {
     generateTweet();
     startTimer();
@@ -349,11 +348,15 @@
   playerTurn.subscribe(turn => {
     playerTurnToPlay = turn;
   });
-
   playerList.subscribe(value => {
     arrayOfPlayers = value;
   });
+  firstToScore.subscribe(scoreState => toScore = scoreState);
 
+  // Mount lifecycle, I'm using this here as a sort of router guard.
+  // If there's no players selected meaning the user deep linked
+  // we kick back to the start.
+  //
   onMount(() => {
     // A safeguard to make sure the user cannot play without choosing players
     //

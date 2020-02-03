@@ -40,9 +40,7 @@
         let firebaseUser = auth.currentUser;
         if (firebaseUser) {
           let { email } = firebaseUser;
-          console.log("first", $user);
           user.set({ ...$user, loggedIn: true, email });
-          console.log("then", $user);
           navigate("start-game");
         }
       })
@@ -52,14 +50,16 @@
 
 <style>
   .container {
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding: 16px;
   }
 
   button {
-    color: black;
-    border-color: black;
+    color: white;
+    border-color: white;
   }
 
   input {
@@ -68,23 +68,24 @@
     outline: none;
     margin-top: 6px;
     background-color: inherit;
-    border: 2px solid black;
-    color: black;
+    border: 2px solid white;
+    color: white;
     font-size: 15px;
     border-radius: 15px;
-    width: 100%;
+    width: 100vw;
   }
 
   p {
     margin-bottom: 0px;
   }
-  .input-container {
-    width: 100%;
-  }
 
   .lower {
     width: 100%;
   }
+
+  @media only screen and (max-width: 600px) {
+  }
+
 </style>
 
 <div class="container">
@@ -92,13 +93,14 @@
     <p for="email">Email</p>
     <input type="email" name="email" bind:value={email} />
   </div>
+
   <div class="input-container">
     <p for="password">Password</p>
     <input type="password" name="password" bind:value={password} />
   </div>
+  
   <div class="lower">
     <button class="login" on:click={handleLoginForm}>Login</button>
     <button class="googlelogin" on:click={handleGoogleLogin}>Google</button>
   </div>
-
 </div>

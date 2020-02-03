@@ -2,7 +2,7 @@
   import { Router, Link, Route } from "svelte-routing";
   import { auth } from "./firebase.js";
   import { user } from "./store.js";
-
+  
   import App from "./App.svelte";
   import Rules from "./Rules.svelte";
   import Donate from "./Donate/DonateButton.svelte";
@@ -21,4 +21,5 @@
   <Route path="play" component={App} />
   <Route path="start-game" component={PreGame} />
   <Route path="rules" component={Rules} />
+  <Route path="login" component={Login} />
 </Router>
