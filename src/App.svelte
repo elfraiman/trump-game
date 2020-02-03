@@ -369,7 +369,7 @@
   .wrapper {
     width: 100%;
     text-align: center;
-    margin-bottom: 26px;
+    margin-bottom: 36px;
   }
   h2 {
     margin-top: 16px;
@@ -485,3 +485,7 @@
     </div>
   {/if}
 </div>
+
+{#if !showGetReadyModal && !showNegativeModal && !showPositiveModal}
+  <Footer />
+{/if}
