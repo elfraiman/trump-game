@@ -7,7 +7,6 @@
 <style>
   .card-wrapper {
     display: grid;
-    grid-template-rows: 0.3fr 0.1fr 1fr 0.5fr;
     justify-content: center;
     justify-items: center;
     align-items: center;
@@ -18,8 +17,7 @@
     padding: 16px;
     text-align: center;
     min-width: 200px;
-    min-height: 400px;
-    height: 500px;
+    height: 400px;
     max-width: 500px;
     max-height: 100%;
     padding: 6px;
@@ -66,7 +64,7 @@
   @media only screen and (max-width: 600px) {
     .card-wrapper {
       max-width: 90%;
-      min-height: 500px;
+      min-height: 300px;
     }
 
     .tweet {
@@ -84,7 +82,7 @@
   @media only screen and (max-width: 360px) {
     .card-wrapper {
       max-width: 90%;
-      min-height: 400px;
+      min-height: 300px;
     }
 
     .tweet {
@@ -107,7 +105,6 @@
 </style>
 
 <div class="card-wrapper">
-  <div class="img-div" />
   <h2
     class="timer"
     style={cardTimer < 4 ? 'color: #ff5722; font-size: 50px' : 'color: white'}>

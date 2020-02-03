@@ -392,12 +392,14 @@
 
   img {
     max-width: 800px;
-    margin-bottom: -30px;
+    width: 400px;
+    margin-bottom: -50px;
   }
 
   @media only screen and (max-width: 600px) {
     img {
       width: 200px;
+      margin-bottom: -30px;
     }
   }
 </style>
